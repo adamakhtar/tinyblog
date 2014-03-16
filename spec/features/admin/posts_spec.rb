@@ -2,11 +2,10 @@ require 'spec_helper'
 
 feature 'Blog admin' do
   scenario 'create a post' do
-    
     author = create(:author, :first_name => "Bart", :last_name => "Simpson")
 
     visit new_admin_post_path
-    
+
     fill_in 'Title', :with => 'Cute cats'
     fill_in 'Body',  :with => 'I love cats'
     select  'Bart Simpson', :from => 'Author'
