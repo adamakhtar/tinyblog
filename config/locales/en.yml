@@ -1,0 +1,5 @@
+en:
+  tinyblog:
+    posts:
+      created: Your post was published.
+      not_created: Your post could not be created.

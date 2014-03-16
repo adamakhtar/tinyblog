@@ -8,6 +8,16 @@
 </head>
 <body>
 
+  <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+      <% alert_type = [:success, :notice].include?(name) ? "success" : "warning" %>
+      <div class="alert alert-<%= alert_type %>">
+        <a class="close" data-dismiss="alert">&#215;</a>
+        <%= content_tag :div, msg, :id => "flash_#{alert_type}" %>
+      </div>
+    <% end %>
+  <% end %>
+
 <%= yield %>
 
 </body>

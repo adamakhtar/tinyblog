@@ -1,5 +1,17 @@
 module CapybaraExt
 
+  def flash_success!(msg)
+    within("#flash_success") do 
+      page.should have_content msg
+    end
+  end
+
+  def flash_warning!(msg)
+    within("#flash_warning") do 
+      page.should have_content msg
+    end
+  end
+
   def selector_for(identifier)
     case identifier
     when :first_post

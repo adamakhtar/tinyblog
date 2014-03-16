@@ -18,4 +18,21 @@ feature 'Posts' do
     page.should have_content post.title
     page.should have_content post.body
   end
+
+  scenario 'create a post' do
+    visit tinyblog.new_post_path
+
+    fill_in 'Title', :with => 'Cute cats'
+    fill_in 'Body',  :with => 'I love cats'
+
+    click_button 'Publish'
+
+    page.current_path.should == tinyblog.posts_path
+
+    flash_success!(I18n.t('tinyblog.posts.created'))
+
+    page.should have_content 'Cute cats'
+    page.should have_content 'I love cats'
+
+  end
 end
