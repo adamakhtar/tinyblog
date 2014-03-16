@@ -24,5 +24,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'devise', '3.1.0'  
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'factory_girl', '4.1.0'
+  s.add_development_dependency 'pry'
 end
 

@@ -2,6 +2,6 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.association :author, :collection => Tinyblog::Author.all, :label_method => :fullname, :value_method => :id, :include_blank => false %>
-  <%= f.button :submit, "Publish" %>
+  <%= f.button :submit, @post.new_record? ? "Publish" : "Update" %>
 <% end %>
 
