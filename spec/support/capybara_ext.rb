@@ -12,6 +12,11 @@ module CapybaraExt
     end
   end
 
+  # Just shorter to type.
+  def page!
+    save_and_open_page
+  end
+
   def selector_for(identifier)
     case identifier
     when :first_post

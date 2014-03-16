@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316082733) do
+ActiveRecord::Schema.define(version: 20140316104658) do
+
+  create_table "tinyblog_authors", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.string   "twitter"
+    t.string   "gplus"
+    t.string   "facebook"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tinyblog_posts", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
 
 end
