@@ -20,8 +20,22 @@ feature 'Adminstrating authors' do
     click_button 'Save'
 
     page.current_path.should == admin_authors_path
-
+    flash_success!(I18n.t('tinyblog.authors.created'))
     page.should have_content 'Buggs Bunny'
+  end
+
+  scenario 'edits an author' do
+    author = create(:author)
+
+    visit edit_admin_author_path(author)
+
+    fill_in 'First name', :with => "Pamela"
+    fill_in 'Last name',  :with => "Anderson"
+    click_button 'Update'
+
+    flash_success!(I18n.t('tinyblog.authors.updated'))
+    page.current_path.should == admin_authors_path
+    page.should have_content "Pamela Anderson"
   end
   
 end

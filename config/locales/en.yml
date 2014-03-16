@@ -4,5 +4,7 @@ en:
       created: Your post was published.
       not_created: Your post could not be created.
     authors:
-      created: Author was created.
+      created: The author was created.
       not_created: The author could not be created.
+      updated: The author was updated.
+      not_updated: The author could not be updated.

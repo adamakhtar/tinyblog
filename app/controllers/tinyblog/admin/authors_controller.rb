@@ -27,9 +27,18 @@ module Tinyblog
       end
 
       def edit
+        @author = Author.find(params[:id])
       end
 
       def update
+        @author = Author.find(params[:id])
+        if @author.update_attributes(author_params)
+          flash[:notice] = t('tinyblog.authors.updated')
+        else
+          flash[:warning] = t('tinyblog.authors.not_updated')
+        end
+
+        respond_with @author, :location => admin_authors_path
       end
 
       def destroy
