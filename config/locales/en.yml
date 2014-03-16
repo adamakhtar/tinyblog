@@ -1,5 +1,8 @@
 en:
   tinyblog:
+    errors:
+      login_required: You must login first.
+      access_denied:  You are not authorized to access that.
     posts:
       created: Your post was published.
       not_created: Your post could not be created.

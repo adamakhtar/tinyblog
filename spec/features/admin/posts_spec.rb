@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 feature 'Blog admin' do
+
+  let!(:user){ create(:user, :admin => true) }
+
+  before do
+    sign_in user
+  end
+
+
   scenario 'create a post' do
     author = create(:author, :first_name => "Bart", :last_name => "Simpson")
 

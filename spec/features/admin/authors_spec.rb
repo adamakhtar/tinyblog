@@ -2,6 +2,11 @@ require 'spec_helper'
 
 feature 'Adminstrating authors' do 
 
+  before do
+    user = create(:user, :admin => true)
+    sign_in user
+  end
+
   scenario 'list authors' do
     author_a = create(:author)
     author_b = create(:author)

@@ -2,7 +2,7 @@ require_dependency "tinyblog/application_controller"
 
 module Tinyblog
   module Admin
-    class AuthorsController < ApplicationController
+    class AuthorsController < BaseController
       
       respond_to :html
       
