@@ -3,3 +3,6 @@ en:
     posts:
       created: Your post was published.
       not_created: Your post could not be created.
+    authors:
+      created: Author was created.
+      not_created: The author could not be created.
