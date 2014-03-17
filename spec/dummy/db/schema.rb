@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316125452) do
+ActiveRecord::Schema.define(version: 20140316150545) do
 
   create_table "tinyblog_authors", force: true do |t|
     t.string   "first_name"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20140316125452) do
     t.string   "twitter"
     t.string   "gplus"
     t.string   "facebook"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tinyblog_pictures", force: true do |t|
+    t.string   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

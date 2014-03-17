@@ -1,3 +1,4 @@
+require 'carrierwave'
 module Tinyblog
   class Engine < ::Rails::Engine
     isolate_namespace Tinyblog

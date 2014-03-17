@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Tinyblog</title>
-  <%= stylesheet_link_tag    "tinyblog/application", media: "all" %>
-  <%= javascript_include_tag "tinyblog/application" %>
+  <%= stylesheet_link_tag    "tinyblog/tinyblog", media: "all" %>
+  <%= javascript_include_tag "tinyblog/tinyblog" %>
+  <%= yield :head if content_for? :head %>
   <%= csrf_meta_tags %>
 </head>
 <body>
