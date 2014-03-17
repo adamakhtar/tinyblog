@@ -15,5 +15,6 @@ Tinyblog::Engine.routes.draw do
     
     resources :posts
     resources :authors
+    resources :pictures, :only => [:create]
   end
 end
