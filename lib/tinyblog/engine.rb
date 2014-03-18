@@ -1,4 +1,3 @@
-require 'carrierwave'
 module Tinyblog
   class Engine < ::Rails::Engine
     isolate_namespace Tinyblog
@@ -9,4 +8,6 @@ module Tinyblog
   end
 end
 
+require 'carrierwave'
 require 'simple_form'
+require 'redcarpet'
