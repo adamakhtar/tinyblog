@@ -4,6 +4,7 @@ module Tinyblog
   mattr_accessor :disqus_shortname, 
                  :twitter_username, 
                  :social_buttons_on,
+                 :share_buttons_on,
                  :post_preview_length,
                  :max_latest_posts,
                  :latest_posts_on
