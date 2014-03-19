@@ -11,7 +11,7 @@
           <%= link_to "Edit", edit_admin_post_path(post) %>
         </td>
         <td>
-          Delete
+          <%= button_to "Delete", admin_post_path(post), :method => :delete %>
         </td>
       </tr>
     <% end %>

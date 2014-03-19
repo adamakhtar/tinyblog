@@ -43,4 +43,16 @@ feature 'Blog admin' do
 
     page.should have_content 'Edited title'
   end
+
+  scenario 'delete a post' do
+    post = create(:post)
+
+    visit edit_admin_post_path(post)
+
+    click_button I18n.t('tinyblog.posts.delete')
+
+    flash_success!(I18n.t('tinyblog.posts.deleted'))
+
+    page.current_path.should == admin_posts_path
+  end
 end

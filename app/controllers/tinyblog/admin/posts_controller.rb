@@ -42,6 +42,11 @@ module Tinyblog
       end
 
       def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        
+        flash[:notice] = t('tinyblog.posts.deleted')
+        redirect_to admin_posts_path
       end
 
       protected
