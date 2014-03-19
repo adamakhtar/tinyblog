@@ -12,13 +12,15 @@ feature 'Blog admin' do
   scenario 'create a post' do
     author = create(:author, :first_name => "Bart", :last_name => "Simpson")
 
-    visit new_admin_post_path
+    visit admin_posts_path
+
+    click_button I18n.t('tinyblog.posts.new')
 
     fill_in 'Title', :with => 'Cute cats'
     fill_in 'Body',  :with => 'I love cats'
     select  'Bart Simpson', :from => 'Author'
 
-    click_button 'Publish'
+    click_button I18n.t('tinyblog.posts.publish')
 
     page.current_path.should == admin_posts_path
 

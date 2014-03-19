@@ -8,7 +8,9 @@ en:
       not_created: Your post could not be created.
       updated: Your post was updated.
       not_updated: Your post could not be updated.
+      new: 'New post'
       delete: 'Delete'
+      publish: 'Publish'
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
     authors:
