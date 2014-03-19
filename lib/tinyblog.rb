@@ -7,7 +7,8 @@ module Tinyblog
                  :share_buttons_on,
                  :post_preview_length,
                  :max_latest_posts,
-                 :latest_posts_on
+                 :latest_posts_on,
+                 :layout
 
 
   class << self
@@ -21,6 +22,10 @@ module Tinyblog
 
     def latest_posts_on
       max_latest_posts > 0
+    end
+
+    def layout
+      @@layout || 'tinyblog/default'
     end
   end
 
