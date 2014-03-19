@@ -7,6 +7,7 @@ module Tinyblog
 
     def index
       @posts = Post.includes(:author).all
+      @latest_posts = Post.select(:title, :id).latest.limit(Tinyblog.max_latest_posts).all if Tinyblog.latest_posts_on
     end
 
     def show

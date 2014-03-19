@@ -2,13 +2,13 @@
 
   <article>
 
-    <%= render 'post_title' %>
+    <%= render 'post_title', :post => @post, :author => @author %>
 
-    <%= render 'post_body' %>
+    <%= render 'post_body', :post => @post %>
     
-    <%= render 'post_author' %>
-
   </article>
+
+  <%= render 'post_author', :author => @author %>
 
   <%= render 'disqus_comments' %>
 
@@ -17,5 +17,5 @@
 <aside>
   <%= render 'share_buttons' %>
   
-  <%= render 'latest_posts' %>
+  <%= render 'latest_posts', :posts => @latest_posts %>
 </aside>

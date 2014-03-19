@@ -13,6 +13,7 @@ en:
       publish: 'Publish'
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
+      about_author: "About %{name}"
     authors:
       created: The author was created.
       not_created: The author could not be created.

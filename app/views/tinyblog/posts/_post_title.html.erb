@@ -1,13 +1,17 @@
 <header class="meta">
   <h1 class="post-title">
-    <%= @post.title %>
+    <% if params[:action] == 'show' %>
+      <%= post.title %>
+    <% elsif params[:action] == 'index' %>
+      <%= link_to post.title, post_path(post) %>
+    <% end %>
   </h1>
   <div class="meta-secondary">
     <div class="published-date">
-      <%= t('tinyblog.posts.published_on', :date => l(@post.created_at.to_date, :format => :long)) %>
+      <%= t('tinyblog.posts.published_on', :date => l(post.created_at.to_date, :format => :long)) %>
     </div>
     </div class="author">
-      <%= t('tinyblog.posts.written_by', :name => @author.fullname) %>  
+      <%= t('tinyblog.posts.written_by', :name => author.fullname) %>  
     </div>
   </div>
 </header>

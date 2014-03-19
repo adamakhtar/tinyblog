@@ -1,4 +1,4 @@
-<div class="author">
-  <div class="author-name"><%= @author.fullname %></div>
-  <div class="author-bio"><%= @author.bio %></div>
-</div>
+<section class="author">
+  <div class="author-name"><%= t('tinyblog.posts.about_author', :name => author.fullname) %></div>
+  <div class="author-bio"><%= author.bio %></div>
+</section>

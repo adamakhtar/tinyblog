@@ -1,5 +1,7 @@
-<h1>Latest Posts</h1>
-
-<section class="posts">
+<main class="posts">
 <%= render @posts %>
-</section>
+</main>
+<aside>
+  <%= render 'latest_posts', :posts => @latest_posts %>
+</aside>
+
