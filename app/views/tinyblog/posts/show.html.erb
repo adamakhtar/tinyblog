@@ -20,4 +20,8 @@
       <%= render 'gplus_widget' %>
     </div>
   <% end %>
+
+  <% if Tinyblog.latest_posts_on %>
+    <%= render 'latest_posts' %>
+  <% end %>
 </aside>

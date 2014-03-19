@@ -1,0 +1,11 @@
+<div class="latest-posts">
+  <ul>
+    <% @latest_posts.each do |post| %>
+      <li class="latest-post">
+        <div class="latest-post-title">
+          <%= link_to post.title, post_path(post) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>  
+</div>

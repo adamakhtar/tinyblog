@@ -5,6 +5,8 @@ module Tinyblog
 
     belongs_to :author
 
+    scope :latest, -> { order('created_at DESC') }
+
     #
     # Short preview of post's body for use in the index.
     #

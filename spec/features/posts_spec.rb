@@ -18,4 +18,18 @@ feature 'Posts' do
     page.should have_content post.title
     page.should have_content post.body
   end
+
+  scenario 'shows latest posts' do
+    
+    Tinyblog.max_latest_posts = 5 
+
+    post_a = create(:post)
+    post_b = create(:post, :title => 'MMA smackdown hightlights')
+    post_c = create(:post, :title => 'Pretty cats and socks')
+
+    visit post_path(post_a)
+
+    page.should have_content post_b.title
+    page.should have_content post_c.title
+  end
 end
