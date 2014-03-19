@@ -29,7 +29,7 @@ feature 'Blog admin' do
 
 
   scenario 'edit a post' do
-    post = create(:post_with_author)
+    post = create(:post)
 
     visit edit_admin_post_path(post)
 

@@ -1,27 +1,23 @@
 <section>
-  <article>
-    <h1><%= @post.title %></h1>
-    <div class="post-body">
-      <%= render_content(@post.body) %>
-    </div>
-  </article>
-  <% if Tinyblog.disqus_shortname %>
-    <div class="post-comments disqus">
-      <%= render 'disqus_comments' %>
-    </div>
-  <% end %>
-  </div>
-</section>
-<aside>
-  <% if Tinyblog.social_buttons_on %>
-    <div class="social-btns">
-      <%= render 'twitter_widget' %>
-      <%= render 'facebook_widget' %>
-      <%= render 'gplus_widget' %>
-    </div>
-  <% end %>
 
-  <% if Tinyblog.latest_posts_on %>
-    <%= render 'latest_posts' %>
-  <% end %>
+  <article>
+
+    <%= render 'post_title' %>
+
+    <%= render 'post_body' %>
+    
+    <%= render 'post_author' %>
+
+  </article>
+
+  <%= render 'disqus_comments' %>
+
+</section>
+
+<aside>
+
+  <%= render 'social_buttons' %>
+
+  <%= render 'latest_posts' %>
+
 </aside>
