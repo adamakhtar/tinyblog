@@ -1,4 +1,23 @@
-<h1><%= @post.title %></h1>
-<div class="post-body">
-  <%= render_content(@post.body) %>
-</div>
+<section>
+  <article>
+    <h1><%= @post.title %></h1>
+    <div class="post-body">
+      <%= render_content(@post.body) %>
+    </div>
+  </article>
+  <% if Tinyblog.disqus_shortname %>
+    <div class="post-comments disqus">
+      <%= render 'disqus_comments' %>
+    </div>
+  <% end %>
+  </div>
+</section>
+<aside>
+  <% if Tinyblog.social_buttons_on %>
+    <div class="social-btns">
+      <%= render 'twitter_widget' %>
+      <%= render 'facebook_widget' %>
+      <%= render 'gplus_widget' %>
+    </div>
+  <% end %>
+</aside>
