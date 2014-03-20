@@ -2,6 +2,8 @@ Tinyblog::Engine.routes.draw do
 
   root :to => 'posts#index'
 
+  get 'sitemap' => 'sitemap#index', :format => :xml, :as => :sitemap
+
   resources :posts, :only => [:index, :show]
 
   namespace :admin do 
