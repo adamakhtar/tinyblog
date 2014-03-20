@@ -3,6 +3,7 @@ require "tinyblog/engine"
 module Tinyblog
   mattr_accessor :blog_name,
                  :blog_description,
+                 :blog_name_links_to,
                  :disqus_shortname, 
                  :twitter_username, 
                  :social_buttons_on,
@@ -10,7 +11,8 @@ module Tinyblog
                  :post_preview_length,
                  :max_latest_posts,
                  :latest_posts_on,
-                 :layout
+                 :layout,
+                 :admin_layout
 
 
   class << self
@@ -28,6 +30,10 @@ module Tinyblog
 
     def layout
       @@layout || 'tinyblog/default'
+    end
+
+    def admin_layout
+      @@admin_layout || 'tinyblog/admin'
     end
 
     def share_buttons_on 

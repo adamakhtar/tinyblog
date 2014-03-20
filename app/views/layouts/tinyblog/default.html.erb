@@ -9,6 +9,20 @@
 </head>
 <body>
 
+  <header>
+    <nav>
+      <ul class="blog-nav">
+        <li><%= link_to Tinyblog.blog_name, Tinyblog.blog_name_links_to || root_path %></li>
+      </ul>
+
+      <ul class="admin-nav">
+        <% if tinyblog_admin_logged_in? %>
+          <li><%= link_to t('tinyblog.nav.frontend.to_admin'), admin_root_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <% alert_type = [:success, :notice].include?(name) ? "success" : "warning" %>

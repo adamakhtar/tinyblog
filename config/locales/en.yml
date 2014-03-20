@@ -1,5 +1,12 @@
 en:
   tinyblog:
+    nav:
+      admin:
+        view_blog: 'Blog'
+        posts: 'Posts'
+        authors: 'Authors'
+      frontend:
+        to_admin: 'Admin'
     errors:
       login_required: You must login first.
       access_denied:  You are not authorized to access that.
