@@ -1,0 +1,25 @@
+<h1>Latest Posts</h1>
+
+<ul class="actions">
+  <li><%= button_to t('tinyblog.posts.new'), new_admin_post_path, :method => :get %></li>
+</ul>
+
+<table class="table posts">
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= post.title %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_admin_post_path(post) %>
+        </td>
+        <td>
+          <%= button_to "Delete", admin_post_path(post), :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

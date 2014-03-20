@@ -1,0 +1,19 @@
+<h1>Authors</h1>
+
+<table class="table authors">
+  <tbody>
+    <% @authors.each do |author| %>    
+      <tr>
+        <td>
+          <%= author.fullname %>
+        </td>
+        <td>
+          Edit
+        </td>
+        <td>
+          Delete
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
