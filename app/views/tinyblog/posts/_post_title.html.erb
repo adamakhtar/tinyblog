@@ -8,7 +8,7 @@
   </h1>
   <div class="meta-secondary">
     <div class="published-date">
-      <%= t('tinyblog.posts.published_on', :date => l(post.created_at.to_date, :format => :long)) %>
+      <%= t('tinyblog.posts.published_on', :date => l(post.published_at, :format => :long)) %>
     </div>
     </div class="author">
       <%= t('tinyblog.posts.written_by', :name => author.fullname) %>  
