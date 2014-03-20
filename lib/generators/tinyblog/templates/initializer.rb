@@ -1,7 +1,8 @@
 # The name of yoru blog. Will appear in the header of your blog site and in your rss feed.
 # Tinyblog.blog_name = 'My Blog'
 
-# A short tagline describing your blog. Appears in site header and rss feed.
+# A short tagline describing your blog. Appears in site header, rss feed and the meta description 
+# (the snippet google shows in search results.) for ONLY your blogs latest posts page i.e example.com/blog 
 # Tinyblog.blog_description = 'The latest news about me'
 
 # Enable to have social share buttons for your posts. - make sure to also specify your twitter user name below.

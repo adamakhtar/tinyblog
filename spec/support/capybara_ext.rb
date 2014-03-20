@@ -27,6 +27,10 @@ module CapybaraExt
       pending "no selector defined yet for #{identifier} - define one in support/capybara_ext.rb"
     end
   end
+
+  def meta_description_present!(description)
+    page.should have_css %Q{meta[content="#{description}"]}, :visible => false
+  end
 end
 
 RSpec.configure do |config|

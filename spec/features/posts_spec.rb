@@ -9,14 +9,20 @@ feature 'Posts' do
 
     page.should have_content post_a.title, :within => selector_for(:first_post)
     page.should have_content post_b.title, :within => selector_for(:second_post)
+    page.has_title? Tinyblog.blog_name
+    meta_description_present!(Tinyblog.blog_description)
   end
 
   scenario 'shows a post' do
-    post = create(:post)
+    title = 'my great post'
+    post = create(:post, :title => title, :meta_description => 'google google google')
 
     visit post_path(post)
+    
     page.should have_content post.title
     page.should have_content post.body
+    page.has_title? "#{title} | #{Tinyblog.blog_name}"
+    meta_description_present!(post.meta_description)
   end
 
   scenario 'shows latest posts' do

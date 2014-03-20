@@ -1,3 +1,9 @@
+<% content_for(:title) { "#{@post.title} | #{Tinyblog.blog_name}" } %>
+
+<% if @post.meta_description %>
+  <% content_for(:meta_description) { @post.meta_description } %>
+<% end %>
+
 <section>
 
   <article>
