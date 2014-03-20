@@ -1,7 +1,9 @@
 require "tinyblog/engine"
 
 module Tinyblog
-  mattr_accessor :disqus_shortname, 
+  mattr_accessor :blog_name,
+                 :blog_description,
+                 :disqus_shortname, 
                  :twitter_username, 
                  :social_buttons_on,
                  :share_buttons_on,
@@ -26,6 +28,18 @@ module Tinyblog
 
     def layout
       @@layout || 'tinyblog/default'
+    end
+
+    def share_buttons_on 
+      @@share_buttons_on || false
+    end
+
+    def blog_name
+      @@blog_name || 'My Blog'
+    end
+
+    def blog_description
+      @@blog_description || 'The latest news about me'
     end
   end
 
