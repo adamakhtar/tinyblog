@@ -25,7 +25,7 @@ en:
       not_created: The author could not be created.
       updated: The author was updated.
       not_updated: The author could not be updated.
-      new: 'New post'
+      new: 'New author'
     ui:
       edit:    'Edit'
       delete: 'Delete'
