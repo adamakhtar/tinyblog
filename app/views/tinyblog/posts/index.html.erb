@@ -1,0 +1,8 @@
+<% content_for(:meta_description) { Tinyblog.blog_description } %>
+<main class="posts">
+<%= render @posts %>
+</main>
+<aside>
+  <%= render 'latest_posts', :posts => @latest_posts %>
+</aside>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tinyblog</title>
+    <%= stylesheet_link_tag    "tinyblog/admin", media: "all" %>
+    <%= javascript_include_tag "tinyblog/tinyblog" %>
+    <%= yield :head if content_for? :head %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <% alert_type = [:success, :notice].include?(name) ? "success" : "warning" %>
+        <div class="alert alert-<%= alert_type %>">
+          <a class="close" data-dismiss="alert">&#215;</a>
+          <%= content_tag :div, msg, :id => "flash_#{alert_type}" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to t('tinyblog.nav.admin.view_blog'), posts_path %></li>
+          <li><%= link_to t('tinyblog.nav.admin.posts'), admin_posts_path %></li>
+          <li><%= link_to t('tinyblog.nav.admin.authors'), admin_authors_path %></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,30 @@
+en:
+  tinyblog:
+    nav:
+      admin:
+        view_blog: 'Blog'
+        posts: 'Posts'
+        authors: 'Authors'
+      frontend:
+        to_admin: 'Admin'
+    errors:
+      login_required: You must login first.
+      access_denied:  You are not authorized to access that.
+    posts:
+      created: Your post was published.
+      not_created: Your post could not be created.
+      updated: Your post was updated.
+      not_updated: Your post could not be updated.
+      new: 'New post'
+      delete: 'Delete'
+      publish: 'Publish'
+      published_on: "Published: %{date}"
+      written_by: "Written by %{name}"
+      about_author: "About %{name}"
+    authors:
+      created: The author was created.
+      not_created: The author could not be created.
+      updated: The author was updated.
+      not_updated: The author could not be updated.
+    
+

@@ -1,0 +1,7 @@
+<div class="post-body content">
+  <% if params[:action] == 'show' %>
+    <%= render_content(post.body) %> 
+  <% elsif params[:action] == 'index' %>
+    <%= render_content(post.preview) %> 
+  <% end %>
+</div>
