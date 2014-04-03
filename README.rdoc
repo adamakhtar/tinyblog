@@ -1,3 +1,55 @@
 = Tinyblog
 
-This project rocks and uses MIT-LICENSE.
+## Setup
+
+```ruby
+# Gemfile.rb
+gem 'tinyblog', :git => 'git@github.com:robodisco/tinyblog.git'
+
+# config/routes.rb
+mount Tinyblog::Engine => "/blog" #or "/my_blog" etc
+```
+
+Then get migrations:
+
+```shell
+rake tinyblog:migrations:install
+rake db:migrate
+```
+
+Followed by getting the tinyblog initializer where you can customize your blog
+```shell
+rails g tinyblog:initializer
+```
+If you want to copy the views over to your app to change the html (recommended) then do
+```shell
+rails g tinyblog:views
+```
+You will also need to define a method in your own application_controller.rb. 
+In it you should return the current user of your app. i.e.
+
+```ruby
+def tinyblog_user
+  current_user
+end
+```
+
+Finally to authorize the admin section, you need to define your own custom authorization method
+in whatever your user class is i.e. User. For example if you have an is_admin boolean on your User model you could do something like this
+
+```ruby
+class User
+ def tinyblog_admin?
+   self.is_admin == true
+ end
+end
+``` 
+
+You will also need to require tinyblogs js asset.
+
+In your application.js add this line
+```js
+//= require tinyblog/tinyblog
+```
+
+
