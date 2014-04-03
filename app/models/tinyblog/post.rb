@@ -5,7 +5,8 @@ module Tinyblog
 
     belongs_to :author
 
-    validates :title, :presence => true
+    validates :title,   presence: true
+    validates :author,  presence:  { message: 'must be present.'}
 
     scope :latest, -> { order('created_at DESC') }
 

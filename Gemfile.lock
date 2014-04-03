@@ -39,6 +39,11 @@ GEM
     arel (4.0.2)
     atomic (1.1.15)
     bcrypt-ruby (3.1.2)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -52,6 +57,7 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     coderay (1.1.0)
+    debug_inspector (0.0.2)
     devise (3.1.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -149,6 +155,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   capybara (= 2.1.0)
   devise (= 3.1.0)
   factory_girl (= 4.1.0)
