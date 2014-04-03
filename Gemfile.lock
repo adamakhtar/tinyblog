@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    tinyblog (0.0.1)
+    tinyblog (0.0.2)
       carrierwave
+      friendly_id (= 5.0.3)
       rails (~> 4.0.2)
       redcarpet (= 3.1.1)
       simple_form
@@ -45,9 +46,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    carrierwave (0.8.0)
+    carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coderay (1.1.0)
     devise (3.1.0)
       bcrypt-ruby (~> 3.0)
@@ -59,11 +62,14 @@ GEM
     erubis (2.7.0)
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    json (1.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
     mail (2.5.4)
