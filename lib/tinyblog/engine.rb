@@ -11,3 +11,4 @@ end
 require 'carrierwave'
 require 'simple_form'
 require 'redcarpet'
+require 'friendly_id'

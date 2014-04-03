@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320062305) do
+ActiveRecord::Schema.define(version: 20140403024852) do
 
   create_table "tinyblog_authors", force: true do |t|
     t.string   "first_name"
@@ -38,7 +38,10 @@ ActiveRecord::Schema.define(version: 20140320062305) do
     t.integer  "author_id"
     t.text     "meta_description"
     t.datetime "published_at"
+    t.string   "slug"
   end
+
+  add_index "tinyblog_posts", ["slug"], name: "index_tinyblog_posts_on_slug", unique: true
 
   create_table "users", force: true do |t|
     t.boolean  "admin"
