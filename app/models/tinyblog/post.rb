@@ -5,9 +5,15 @@ module Tinyblog
 
     belongs_to :author
 
+    validates :title,   presence: true
+    validates :author,  presence:  { message: 'must be present.'}
+
     scope :latest, -> { order('created_at DESC') }
 
     before_save :update_published_at
+
+    extend FriendlyId
+    friendly_id :title, use: [:slugged, :finders]
 
     #
     # Short preview of post's body for use in the index.
