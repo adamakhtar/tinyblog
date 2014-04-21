@@ -20,7 +20,7 @@ en:
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
       about_author: "About %{name}"
-      delete: 'Delete'
+      deleted: 'Post was deleted.'
     authors:
       created: The author was created.
       not_created: The author could not be created.
