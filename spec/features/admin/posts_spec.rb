@@ -49,9 +49,11 @@ feature 'Blog admin' do
   scenario 'delete a post' do
     post = create(:post)
 
-    visit edit_admin_post_path(post)
+    visit admin_posts_path()
 
-    click_button I18n.t('tinyblog.posts.delete')
+    within(selector_for(:first_post)) do
+      click_button I18n.t('tinyblog.posts.delete')
+    end
 
     flash_success!(I18n.t('tinyblog.posts.deleted'))
 

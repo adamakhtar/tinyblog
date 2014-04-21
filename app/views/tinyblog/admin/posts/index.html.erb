@@ -1,25 +1,28 @@
-<h1>Latest Posts</h1>
+<div class="container">
+  
+  <div class="panel-header">
+    <h1>All Posts</h1>
+  </div>
 
-<ul class="actions">
-  <li><%= button_to t('tinyblog.posts.new'), new_admin_post_path, :method => :get %></li>
-</ul>
-
-<table class="table posts">
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= post.title %>
-        </td>
-        <td>
-          <%= link_to "Edit", edit_admin_post_path(post) %>
-        </td>
-        <td>
-          <%= button_to "Delete", admin_post_path(post), :method => :delete %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table id="posts" class="table posts">
+    <tbody>
+      <% @posts.each do |post| %>
+        <%= content_tag_for :tr, post do %>
+          <td>
+            <%= post.title %>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_admin_post_path(post), :class => "btn btn-default btn-sm" %>
+          </td>
+          <td>
+            <%= button_to "Delete", admin_post_path(post), :method => :delete, :class => 'btn btn-danger btn-sm' %>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
 
+  <%= button_to t('tinyblog.posts.new'), new_admin_post_path, :method => :get, :class => 'btn btn-primary' %>
+
+</div>

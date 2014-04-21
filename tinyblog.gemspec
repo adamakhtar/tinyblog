@@ -30,6 +30,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'better_errors'
   s.add_development_dependency 'binding_of_caller'
+  s.add_development_dependency 'bootstrap-sass'
+  s.add_development_dependency 'sass-rails'
   
 end
 

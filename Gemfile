@@ -15,4 +15,4 @@ gemspec
 
 gem 'jquery-rails'
 
-gem 'bootstrap-sass'
+
