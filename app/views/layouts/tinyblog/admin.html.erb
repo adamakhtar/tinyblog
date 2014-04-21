@@ -9,17 +9,6 @@
   </head>
   <body>
 
-    <% flash.each do |name, msg| %>
-      <% if msg.is_a?(String) %>
-        <% alert_type = [:success, :notice].include?(name) ? "success" : "warning" %>
-        <div class="alert alert-<%= alert_type %>">
-          <a class="close" data-dismiss="alert">&#215;</a>
-          <%= content_tag :div, msg, :id => "flash_#{alert_type}" %>
-        </div>
-      <% end %>
-    <% end %>
-
-
     <nav class="navbar navbar-default" role="navigation">
        <div class="container">
          
@@ -45,6 +34,16 @@
          </div>  
        </div>
      </nav>
+
+     <% flash.each do |name, msg| %>
+       <% if msg.is_a?(String) %>
+         <% alert_type = [:success, :notice].include?(name) ? "success" : "warning" %>
+         <div class="alert alert-<%= alert_type %>">
+           <a class="close" data-dismiss="alert">&#215;</a>
+           <%= content_tag :div, msg, :id => "flash_#{alert_type}" %>
+         </div>
+       <% end %>
+     <% end %>
 
     <%= yield %>
 
