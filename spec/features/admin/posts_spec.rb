@@ -52,9 +52,9 @@ feature 'Blog admin' do
     visit admin_posts_path()
 
     within(selector_for(:first_post)) do
-      click_button I18n.t('tinyblog.posts.delete')
+      click_button I18n.t('tinyblog.ui.delete')
     end
-
+    page!
     flash_success!(I18n.t('tinyblog.posts.deleted'))
 
     page.current_path.should == admin_posts_path
