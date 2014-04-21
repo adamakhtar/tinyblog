@@ -14,5 +14,3 @@ gemspec
 # gem 'debugger'
 
 gem 'jquery-rails'
-
-

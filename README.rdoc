@@ -13,7 +13,7 @@ mount Tinyblog::Engine => "/blog" #or "/my_blog" etc
 Then get migrations:
 
 ```shell
-rake tinyblog:migrations:install
+rake tinyblog:install:migrations
 rake db:migrate
 ```
 

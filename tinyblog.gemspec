@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.0.2"
+  s.add_dependency "rails", "~> 4.1.0"
   s.add_dependency 'carrierwave'
   s.add_dependency 'friendly_id', '5.0.3'
   s.add_dependency 'redcarpet', '3.1.1'
