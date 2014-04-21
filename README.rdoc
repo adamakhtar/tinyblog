@@ -52,4 +52,17 @@ In your application.js add this line
 //= require tinyblog/tinyblog
 ```
 
+If you want create your own styles for your blog (and you will want to) you should create a stylesheet in your assets directory and add your stylings. If you want to use what's provided by default, require tinyblog/base like so
+
+```ruby 
+# assets/stylesheets/tinyblog/tinyblog.css
+/*
+*= require 'tinyblog/base'
+*/
+```
+
+
+
+
+
 
