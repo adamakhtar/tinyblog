@@ -1,4 +1,10 @@
-# The name of yoru blog. Will appear in the header of your blog site and in your rss feed.
+#
+# Overide the defaults below to customize your blog (defaults are shown below)
+#
+
+
+
+# The name of your blog. Will appear in the header of your blog site and in your rss feed.
 # Tinyblog.blog_name = 'My Blog'
 
 # A short tagline describing your blog. Appears in site header, rss feed and the meta description 

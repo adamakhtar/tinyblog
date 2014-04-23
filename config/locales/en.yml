@@ -16,15 +16,18 @@ en:
       updated: Your post was updated.
       not_updated: Your post could not be updated.
       new: 'New post'
-      delete: 'Delete'
       publish: 'Publish'
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
       about_author: "About %{name}"
+      deleted: 'Post was deleted.'
     authors:
       created: The author was created.
       not_created: The author could not be created.
       updated: The author was updated.
       not_updated: The author could not be updated.
-    
+      new: 'New author'
+    ui:
+      edit:    'Edit'
+      delete: 'Delete'
 

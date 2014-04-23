@@ -1,8 +1,17 @@
 <%= simple_form_for [tinyblog, :admin, @post] do |f| %>
-  <%= f.input :title %>
-  <%= f.association :author, :collection => Tinyblog::Author.all, :label_method => :fullname, :value_method => :id, :include_blank => false %>
-  <%= f.input :body, :input_html => {:'data-image-upload-url' => admin_pictures_url()} %>
-  <%= f.input :meta_description %>
-  <%= f.button :submit, @post.new_record? ? "Publish" : "Update" %>
+  <div class="panel-body">
+    <%= f.input :title %>
+    <%= f.input :body, :input_html => {:'data-image-upload-url' => admin_pictures_url()} %>
+    <%= f.association :author, :collection => Tinyblog::Author.all, :label_method => :fullname, :value_method => :id, :include_blank => false %>
+    <%= f.input :meta_description %>
+  </div>
+  <div class="panel-footer">
+      <%= f.button :submit, @post.new_record? ? "Publish" : "Update", :class => 'btn btn-primary' %>
+  </div>
 <% end %>
 
+
+ <%= content_for :head do %>
+  <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+  <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+<% end %>

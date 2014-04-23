@@ -47,6 +47,10 @@ module Tinyblog
     def blog_description
       @@blog_description || 'The latest news about me'
     end
+
+    def blog_name_links_to
+      @@blog_name_links_to ||= '/'
+    end
   end
 
 end
