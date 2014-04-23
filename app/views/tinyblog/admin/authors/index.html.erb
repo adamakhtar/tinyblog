@@ -1,19 +1,33 @@
-<h1>Authors</h1>
+<div class="container">
+  
+  <div class="panel-header">
+    <h1>Authors</h1>
+  </div>
 
-<table class="table authors">
-  <tbody>
-    <% @authors.each do |author| %>    
-      <tr>
-        <td>
-          <%= author.fullname %>
-        </td>
-        <td>
-          Edit
-        </td>
-        <td>
-          Delete
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class="table authors">
+    <tbody>
+      <% @authors.each do |author| %>    
+        <tr>
+          <td>
+            <%= author.fullname %>
+          </td>
+          <td>
+            <%= link_to t('tinyblog.ui.edit'), edit_admin_author_path(author), :class => "btn btn-default btn-sm" %>
+          </td>
+          <td>
+            <%= button_to t('tinyblog.ui.delete'), admin_author_path(author), :method => :delete, :class => 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
+  <%= button_to t('tinyblog.authors.new'), new_admin_author_path, :method => :get, :class => 'btn btn-primary' %>
+
+</div>
+
+
+

@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.0.2"
+  s.add_dependency "rails", "~> 4.1.0"
   s.add_dependency 'carrierwave'
   s.add_dependency 'friendly_id', '5.0.3'
   s.add_dependency 'redcarpet', '3.1.1'
@@ -30,6 +30,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_development_dependency 'better_errors'
   s.add_development_dependency 'binding_of_caller'
+  s.add_development_dependency 'bootstrap-sass'
+  s.add_development_dependency 'sass-rails'
+  s.add_development_dependency 'sprockets', '2.11.0' # explicily add sprockets to lock to this version to fix undefined method 'enviromnet' bug
   
 end
 

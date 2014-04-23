@@ -38,8 +38,8 @@ feature 'Adminstrating authors' do
     fill_in 'Last name',  :with => "Anderson"
     click_button 'Update'
 
-    flash_success!(I18n.t('tinyblog.authors.updated'))
     page.current_path.should == admin_authors_path
+    flash_success!(I18n.t('tinyblog.authors.updated'))
     page.should have_content "Pamela Anderson"
   end
   

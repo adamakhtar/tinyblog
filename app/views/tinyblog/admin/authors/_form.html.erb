@@ -1,9 +1,13 @@
 <%= simple_form_for [tinyblog, :admin, @author] do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :bio %>
-  <%= f.input :twitter %>
-  <%= f.input :facebook %>
-  <%= f.input :gplus %>
-  <%= f.button :submit, @author.new_record? ? 'Save' : 'Update' %>
+  <div class="panel-body">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :bio %>
+    <%= f.input :twitter %>
+    <%= f.input :facebook %>
+    <%= f.input :gplus %>
+  </div>
+  <div class="panel-footer">
+    <%= f.button :submit, @author.new_record? ? 'Save' : 'Update', :class => "btn btn-primary" %>
+  </div>
 <% end %>
