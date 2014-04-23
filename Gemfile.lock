@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tinyblog (0.0.2)
+    tinyblog (0.0.3)
       carrierwave
       friendly_id (= 5.0.3)
       rails (~> 4.1.0)
