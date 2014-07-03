@@ -21,6 +21,12 @@ Followed by getting the tinyblog initializer where you can customize your blog
 ```shell
 rails g tinyblog:initializer
 ```
+
+and the carrierwave uploader if you want to customize it for fog etc
+```shell
+rails g tinyblog:uploader
+```
+
 If you want to copy the views over to your app to change the html (recommended) then do
 ```shell
 rails g tinyblog:views
