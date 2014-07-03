@@ -26,3 +26,6 @@
 # Your twitter handle (without the @) - essential if you have enabled share_buttons_on
 #Tinyblog.twitter_username = ''
 
+# Your disqus unique shortname for discus (comment out if you want to disable discus)
+#Tinyblog.disqus_shortname = ''
+
