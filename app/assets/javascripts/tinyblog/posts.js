@@ -7,7 +7,7 @@ ready = function(){
   editor.render();
   
   options = {
-    uploadUrl: $("#new_post #post_body").data('image-upload-url'),
+    uploadUrl: $("textarea#post_body").data('image-upload-url'),
     extraParams: { 
       authenticity_token: $('input[name="authenticity_token"]').attr('value') 
     },
