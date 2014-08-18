@@ -25,9 +25,9 @@ feature 'Posts' do
     page.should_not have_content post_b.title 
   end
 
-  scenario 'shows a post' do
+  scenario 'shows a published post' do
     title = 'my great post'
-    post = create(:post, :title => title, :meta_description => 'google google google')
+    post = create(:post, :published, :title => title, :meta_description => 'google google google')
 
     visit post_path(post)
     
@@ -41,9 +41,9 @@ feature 'Posts' do
     
     Tinyblog.max_latest_posts = 5 
 
-    post_a = create(:post)
-    post_b = create(:post, :title => 'MMA smackdown hightlights')
-    post_c = create(:post, :title => 'Pretty cats and socks')
+    post_a = create(:post, :published)
+    post_b = create(:post, :published, :title => 'MMA smackdown hightlights')
+    post_c = create(:post, :published, :title => 'Pretty cats and socks')
 
     visit post_path(post_a)
 

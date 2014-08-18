@@ -12,9 +12,9 @@ module Tinyblog
     end
 
     def show
-      @post = Post.find(params[:id])
+      @post = Post.with_published_state.find(params[:id])
       @author = @post.author
-      @latest_posts = Post.latest.limit(Tinyblog.max_latest_posts).all if Tinyblog.latest_posts_on
+      @latest_posts = Post.with_published_state.latest.limit(Tinyblog.max_latest_posts).all if Tinyblog.latest_posts_on
     end
   end
 end
