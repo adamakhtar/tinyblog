@@ -8,7 +8,6 @@ module Tinyblog
 
       def index
         params[:tab] ||= 'All'
-
         @posts = case params[:tab]
         when 'All' then Post.all
         when 'Trash' then Post.only_deleted
@@ -51,6 +50,13 @@ module Tinyblog
         @post.destroy
         
         flash[:notice] = t('tinyblog.posts.deleted')
+        redirect_to admin_posts_path
+      end
+
+      def restore
+        @post = Post.only_deleted.find(params[:id])
+        Post.restore(@post.id)
+        flash[:notice] = t('tinyblog.posts.restored')
         redirect_to admin_posts_path
       end
 

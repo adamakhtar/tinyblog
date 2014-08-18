@@ -70,4 +70,19 @@ feature 'Blog admin' do
 
     assert_seen!(post.title, within: selector_for(:first_post))
   end
+
+  scenario 'undeleting a post' do
+    post = create(:post)
+    post.destroy
+
+    visit admin_posts_path()
+
+    click_link 'Trash'
+
+    click_button I18n.t('tinyblog.ui.restore')
+
+    flash_success!(I18n.t('tinyblog.posts.restored'))
+    click_link 'All'
+    page.should have_content post.title
+  end
 end

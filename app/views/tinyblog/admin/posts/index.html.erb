@@ -37,7 +37,7 @@
           <td>
             <% if post.destroyed? %>
 
-              <%= button_to t('tinyblog.ui.delete'), restore_admin_post_path(post), :method => :put, :class => 'btn btn-danger btn-sm btn-block', confirm: 'Are you sure?' %>              
+              <%= button_to t('tinyblog.ui.restore'), restore_admin_post_path(post), :method => :put, :class => 'btn btn-danger btn-sm btn-block', confirm: 'Are you sure?' %>              
 
             <% else %>
 
