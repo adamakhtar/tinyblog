@@ -15,6 +15,16 @@ module Tinyblog
     extend FriendlyId
     friendly_id :title, use: [:slugged, :finders]
 
+    include Workflow
+    workflow do
+      state :draft do
+        event :publish, :transitions_to => :published
+      end
+      state :published do
+        event :retract, :transitions_to => :draft
+      end
+    end
+
     #
     # Short preview of post's body for use in the index.
     #
