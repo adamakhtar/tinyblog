@@ -21,6 +21,7 @@ en:
       written_by: "Written by %{name}"
       about_author: "About %{name}"
       deleted: 'Post was deleted.'
+      restored: 'Post was restored.'
     authors:
       created: The author was created.
       not_created: The author could not be created.
@@ -30,4 +31,5 @@ en:
     ui:
       edit:    'Edit'
       delete: 'Delete'
+      restore: 'Restore'
 

@@ -1,7 +1,15 @@
 <div class="container">
   
   <div class="panel-header">
-    <h1>All Posts</h1>
+    <ul class="nav nav-pills">
+      <%= content_tag :li, class: ('active' if params[:tab] == 'All' ) do %>
+        <%= link_to 'All', admin_posts_path(tab: 'All') %>
+      <% end %>
+
+      <%= content_tag :li, class: ('active' if params[:tab] == 'Trash' ) do %>
+        <%= link_to 'Trash', admin_posts_path(tab: 'Trash') %>
+      <% end %>
+    </ul>
   </div>
 
   <table id="posts" class="table posts">
@@ -27,7 +35,15 @@
             <%= link_to "Edit", edit_admin_post_path(post), :class => "btn btn-default btn-sm btn-block" %>
           </td>
           <td>
-            <%= button_to t('tinyblog.ui.delete'), admin_post_path(post), :method => :delete, :class => 'btn btn-danger btn-sm btn-block' %>
+            <% if post.destroyed? %>
+
+              <%= button_to t('tinyblog.ui.restore'), restore_admin_post_path(post), :method => :put, :class => 'btn btn-danger btn-sm btn-block', confirm: 'Are you sure?' %>              
+
+            <% else %>
+
+              <%= button_to t('tinyblog.ui.delete'), admin_post_path(post), :method => :delete, :class => 'btn btn-danger btn-sm btn-block', confirm: 'Are you sure?' %>
+
+            <% end %>
           </td>
         <% end %>
       <% end %>

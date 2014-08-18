@@ -1,6 +1,6 @@
 module Tinyblog
   class Post < ActiveRecord::Base
-    
+    acts_as_paranoid    
     include ::ActionView::Helpers::TextHelper
 
     belongs_to :author
