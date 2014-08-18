@@ -4,6 +4,7 @@ PATH
     tinyblog (0.0.3)
       carrierwave
       friendly_id (= 5.0.3)
+      paranoia (~> 2.0)
       rails (~> 4.1.0)
       redcarpet (= 3.1.1)
       simple_form
@@ -94,7 +95,9 @@ GEM
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
-    polyglot (0.3.4)
+    paranoia (2.0.2)
+      activerecord (~> 4.0)
+    polyglot (0.3.5)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
