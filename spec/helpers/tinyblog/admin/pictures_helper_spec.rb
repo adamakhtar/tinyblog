@@ -12,6 +12,6 @@ require 'spec_helper'
 # end
 module Tinyblog
   describe Admin::PicturesHelper do
-    pending "add some examples to (or delete) #{__FILE__}"
+
   end
 end

@@ -59,4 +59,15 @@ feature 'Blog admin' do
 
     page.current_path.should == admin_posts_path
   end
+
+  scenario 'listing deleted' do
+    post = create(:post)
+    post.destroy
+
+    visit admin_posts_path()
+
+    click_link 'Trash'
+
+    assert_seen!(post.title, within: selector_for(:first_post))
+  end
 end

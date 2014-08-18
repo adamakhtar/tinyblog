@@ -28,6 +28,17 @@ module CapybaraExt
     end
   end
 
+  #shorter way to write it
+  def assert_seen!(str, opts={})
+    if opts[:within].present?
+      within(opts[:within]) do
+        page.should have_content str
+      end
+    else
+      page.should have_content str
+    end
+  end
+
   def meta_description_present!(description)
     page.should have_css %Q{meta[content="#{description}"]}, :visible => false
   end
