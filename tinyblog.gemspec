@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'redcarpet', '3.1.1'
   s.add_dependency 'simple_form'
   s.add_dependency 'paranoia', '~> 2.0'
+  s.add_dependency 'workflow', '~> 1.1.0'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec-rails', '2.14.1'

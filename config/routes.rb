@@ -11,6 +11,7 @@ Tinyblog::Engine.routes.draw do
     resources :authors
     resources :posts do 
       member { put :restore }
+      resource :status, only: [:update], controller: 'posts/status'
     end
     resources :authors
     resources :pictures, :only => [:create]

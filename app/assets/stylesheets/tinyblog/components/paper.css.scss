@@ -1,0 +1,26 @@
+.paper {
+
+}
+
+.paper-header, .paper-body {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.paper-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height: 60px;
+}
+
+.paper-header h1 {
+  margin: 0px;
+}
+
+.paper-body {
+  min-height: 1000px;
+}
+
+.paper-footer {
+  height: 60px;
+}

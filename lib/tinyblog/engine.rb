@@ -1,3 +1,10 @@
+require 'carrierwave'
+require 'simple_form'
+require 'redcarpet'
+require 'friendly_id'
+require 'paranoia'
+require 'workflow'
+
 module Tinyblog
   class Engine < ::Rails::Engine
     isolate_namespace Tinyblog
@@ -7,9 +14,3 @@ module Tinyblog
     end
   end
 end
-
-require 'carrierwave'
-require 'simple_form'
-require 'redcarpet'
-require 'friendly_id'
-require 'paranoia'

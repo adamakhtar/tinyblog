@@ -14,3 +14,5 @@ gemspec
 # gem 'debugger'
 
 gem 'jquery-rails'
+
+gem 'bootstrap-sass', '~> 3.0.0.0.rc'
