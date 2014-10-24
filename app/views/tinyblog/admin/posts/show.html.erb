@@ -1,0 +1,62 @@
+<div class="container-fixed">
+  <div class="breadcrumbs">
+    <%= link_to 'Back to posts', admin_posts_path %>
+  </div>
+  <div class="row">
+
+    <div class="main">  
+      <div class="paper">
+          <div class="paper-header">
+            <h1 class="title">
+              <%= @post.title %>
+            </h1>
+          </div>
+          <div class="paper-body">
+            <%= simple_format(@post.body) %>
+          </div>
+
+          <div class="paper-footer">
+          </div>
+      </div>
+    </div>
+
+    
+    <div class="side">
+      <div class="actions">
+          <%= link_to t('tinyblog.posts.edit'), edit_admin_post_path(@post), :class => 'btn btn-block btn-default btn-lg' %>
+          <ul class="actions-secondary">
+            <li><%= link_to t('tinyblog.posts.view') + '...', post_path(@post, preview: true) %></li>
+            <li><%= link_to t('tinyblog.posts.delete') + '...', admin_post_path(@post), method: :delete %></li>
+          </ul>
+      </div>
+    
+        
+    
+      <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false} do |f| %>
+        <fieldset>
+          <label>Status: <%= @post.current_state.name.capitalize %></label>
+          <div class="form-group">
+            <% if @post.published? %>
+              <%= link_to 'Revert to draft', admin_post_status_path(@post, status: 'draft'), method: :patch, class: 'btn btn-sm btn-default' %>
+            <% else %>
+              <%= link_to 'Publish it', admin_post_status_path(@post, status: 'published'), method: :patch, class: 'btn btn-sm btn-default' %>
+            <% end %>
+          </div>
+        </fieldset>
+
+        <fieldset>
+  
+          <%= f.association :author, :collection => Tinyblog::Author.all, label: 'Authored by', :label_method => :short_fullname, :value_method => :id, :include_blank => false, input_html: {class: 'input-sm'} %>
+
+        </fieldset>
+
+        <fieldset>
+          <%= f.input :meta_description %>
+        </fieldset>
+        
+        <%= f.button :submit, t('tinyblog.posts.update'), class: 'btn btn-xs btn-primary' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

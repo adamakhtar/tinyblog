@@ -7,5 +7,9 @@ FactoryGirl.define do
     trait :published do
       workflow_state 'published'
     end
+
+    trait :drafting do
+      workflow_state 'drafting'
+    end 
   end
 end 

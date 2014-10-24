@@ -9,37 +9,45 @@ feature 'Blog admin' do
   end
 
 
-  scenario 'create a post' do
+  scenario 'creates a post' do
     author = create(:author, :first_name => "Bart", :last_name => "Simpson")
 
     visit admin_posts_path
+    click_link I18n.t('tinyblog.posts.new')
 
-    click_button I18n.t('tinyblog.posts.new')
+    page.current_path.should == edit_admin_post_path(Tinyblog::Post.last)
+  end
 
-    fill_in 'Title', :with => 'Cute cats'
-    fill_in 'Body',  :with => 'I love cats'
-    select  'Bart Simpson', :from => 'Author'
+  scenario 'updates a posts settings' do
+    post = create(:post)
+    new_author = create(:author, :first_name => "Michael", :last_name => "Jackson")
 
-    click_button I18n.t('tinyblog.posts.publish')
+    visit admin_post_path(post)
 
-    page.current_path.should == admin_posts_path
+    fill_in 'Meta description', with: 'meta meta meta'
+    select new_author.short_fullname, from: 'Authored by'
 
-    flash_success!(I18n.t('tinyblog.posts.created'))
+    click_button I18n.t('tinyblog.posts.update')
 
-    page.should have_content 'Cute cats'
+    page.current_path.should == admin_post_path(post)
+
+    flash_success!(I18n.t('tinyblog.posts.updated'))
+    page.should have_select('Authored by', selected: new_author.short_fullname)
   end
 
 
   scenario 'edit a post' do
     post = create(:post)
 
-    visit edit_admin_post_path(post)
+    visit admin_post_path(post)
 
-    fill_in 'Title', :with => 'Edited title'
+    click_link I18n.t('tinyblog.posts.edit')
 
-    click_button 'Update'
+    fill_in 'post_title', :with => 'Edited title'
 
-    page.current_path.should == admin_posts_path
+    click_button I18n.t('tinyblog.ui.save_changes')
+
+    page.current_path.should == admin_post_path(post)
 
     flash_success!(I18n.t('tinyblog.posts.updated'))
 
@@ -52,7 +60,7 @@ feature 'Blog admin' do
     visit admin_posts_path()
 
     within(selector_for(:first_post)) do
-      click_button I18n.t('tinyblog.ui.delete')
+      click_link I18n.t('tinyblog.ui.delete')
     end
     
     flash_success!(I18n.t('tinyblog.posts.deleted'))
@@ -79,7 +87,7 @@ feature 'Blog admin' do
 
     click_link 'Trash'
 
-    click_button I18n.t('tinyblog.ui.restore')
+    click_link I18n.t('tinyblog.ui.restore')
 
     flash_success!(I18n.t('tinyblog.posts.restored'))
     click_link 'All'

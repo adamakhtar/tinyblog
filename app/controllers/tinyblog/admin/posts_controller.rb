@@ -14,19 +14,22 @@ module Tinyblog
         end
       end
 
+      def show
+        @post = Post.find(params[:id])
+      end
+
       def new
         @post = Post.new
       end
 
       def create
-        @post = Post.new(post_params)
-        if @post.save
-          flash[:notice] = t('tinyblog.posts.created')
+        @post = Post.create(author: Author.first)
+        if @post.valid?
+          redirect_to edit_admin_post_path(@post)
         else
           flash[:warning] = t('tinyblog.posts.not_created')
+          redirect_to admin_posts_path
         end
-
-        respond_with @post, :location => admin_posts_path
       end
 
       def edit
@@ -42,7 +45,7 @@ module Tinyblog
           flash[:warning] = t('tinyblog.posts.not_updated')
         end
 
-        respond_with @post, :location => admin_posts_path
+        respond_with @post, :location => admin_post_path(@post)
       end
 
       def destroy

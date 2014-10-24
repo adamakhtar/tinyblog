@@ -1,19 +1,4 @@
-body {
-  background: #fff;
-}
+@import "css";
+@import "components/manifest";
+@import "admin/posts";
 
-table#posts {
-  max-width: 960px;
-}
-
-table#posts col.title {
-  width: 80%;
-}
-
-table#posts col.edit {
-  width: 10%;
-}
-
-table#posts col.delete {
-  width: 10%;
-}

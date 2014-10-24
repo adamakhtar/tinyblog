@@ -7,33 +7,35 @@
     <%= yield :head if content_for? :head %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="admin <%= controller_name %> <%= action_name %>">
 
-    <nav class="navbar navbar-default" role="navigation">
-       <div class="container">
-         
-         <div class="navbar-header">
-           <button type="button" class="navbar-toggle" data-toggle="collapse">
-             <span class="sr-only">Toggle navigation</span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-             <span class="icon-bar"></span>
-           </button>
-           <%= link_to "Site", Tinyblog.blog_name_links_to, :class => "navbar-brand" %>
-         </div>
-
-
-         <div class="collapse navbar-collapse">
-           <div class="nav-bar">
-             <ul class="nav navbar-nav navbar-right">
-               <li><%= link_to t('tinyblog.nav.admin.view_blog'), posts_path %></li>
-               <li><%= link_to t('tinyblog.nav.admin.posts'), admin_posts_path %></li>
-               <li><%= link_to t('tinyblog.nav.admin.authors'), admin_authors_path %></li>
-             </ul>
+    <% unless controller_name == 'posts' and action_name == 'edit' %>
+      <nav class="navbar navbar-default" role="navigation">
+         <div class="container">
+           
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <%= link_to "Site", Tinyblog.blog_name_links_to, :class => "navbar-brand" %>
            </div>
-         </div>  
-       </div>
-     </nav>
+
+
+           <div class="collapse navbar-collapse">
+             <div class="nav-bar">
+               <ul class="nav navbar-nav navbar-right">
+                 <li><%= link_to t('tinyblog.nav.admin.view_blog'), posts_path %></li>
+                 <li><%= link_to t('tinyblog.nav.admin.posts'), admin_posts_path %></li>
+                 <li><%= link_to t('tinyblog.nav.admin.authors'), admin_authors_path %></li>
+               </ul>
+             </div>
+           </div>  
+         </div>
+       </nav>
+     <% end %>
 
      <%= render 'tinyblog/shared/messages' %>
 

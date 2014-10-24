@@ -1,0 +1,152 @@
+.admin.posts.index {
+
+  .side {
+    margin-top: 63px;
+  }
+
+  .side .btn {
+    margin-bottom: 15px;
+  }
+
+  .side li {
+    margin-bottom: 1px solid black;
+    line-height: 2;
+  }
+
+  .side li a {
+    display: block;
+    color: $text-color;
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+
+  .side li a:hover {
+    color: $text-color;
+    opacity: 0.9;
+  }
+
+  .side .actions {
+    text-align: center;
+  }
+
+  .main {
+    margin-top: 60px;
+    padding-left: 15px;
+  }
+
+  h1 {
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-top: 0px;
+    opacity: 0.6;
+  }
+  
+  table.posts {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  tr.post{
+    border-top: 1px dotted #ddd;
+    height: 40px;
+  }
+
+  td.post-author {
+    width: 15%;
+  }
+
+  td.post-title {
+    width: 75%
+  }
+
+  td.post-actions {
+    width: 10%;
+  }
+
+  td.post-actions a {
+    color: $text-color;
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  td.post-actions a:hover {
+    color: $text-color;
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+
+  .post-actions a {
+    display: block;
+  }
+
+  .post-title a{
+    display: block;
+    padding: 10px 0px;
+    color: $text-color;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .post-title a:hover {
+    color: $text-color;
+    font-weight: bold;
+    text-decoration: underline; 
+  }
+
+  
+}
+
+.admin.posts.show {
+
+  background-color: #eee;
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+  }
+
+  .breadcrumbs a {
+    @include action-link;
+  }
+
+  .main {
+    width: 730px;
+    margin-left: -15px;
+    float: left;
+    margin-bottom: 100px;
+  }
+
+  .side {
+    width: 240px;
+    padding-left: 30px;
+    float: left;
+  }
+
+  .side .actions {
+    margin-bottom: 60px;
+  }
+
+  .paper {
+    background-color: #fff;
+  }
+}
+
+.admin.posts.edit {
+  .main, .side {
+    margin-top: 60px;
+  }
+
+  .main {
+    width: 770px;
+    margin-left: -15px;
+    float: left;
+    margin-bottom: 100px;
+  }
+
+  .side {
+    width: 200px;
+    padding-left: 30px;
+    float: left;
+  }
+}
