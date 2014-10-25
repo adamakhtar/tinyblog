@@ -18,6 +18,8 @@ module Tinyblog
         Post.with_published_state.find(params[:id])
       end
 
+      @post.view! unless tinyblog_admin_logged_in?
+
       @author = @post.author
       @latest_posts = Post.with_published_state.latest.limit(Tinyblog.max_latest_posts).all if Tinyblog.latest_posts_on
     end

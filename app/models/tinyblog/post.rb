@@ -35,6 +35,10 @@ module Tinyblog
       truncate(body, length: Tinyblog.post_preview_length, separator: "\n")
     end
 
+    def view!
+      self.increment!(:view_count)
+    end
+
     private 
     #
     # Callback
