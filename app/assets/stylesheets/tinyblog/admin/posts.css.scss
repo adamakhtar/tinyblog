@@ -133,20 +133,34 @@
 }
 
 .admin.posts.edit {
-  .main, .side {
-    margin-top: 60px;
-  }
 
   .main {
-    width: 770px;
-    margin-left: -15px;
-    float: left;
-    margin-bottom: 100px;
+    width: 700px;
+    margin: 20px auto 100px;
   }
 
   .side {
-    width: 200px;
-    padding-left: 30px;
-    float: left;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 70px;
+  }
+
+  input#post_title {
+    height: 50px;
+    width: 660px;
+    border: none;
+    border-bottom: 1px dotted #aaa;
+    padding: 10px 10px;
+    font-family: 'Menlo', 'Source Code Pro';
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.75;
+    color: $editor-highlight-color;
+    outline: none;
+  } 
+
+  .post-body {
+    padding: 20px 0px;
   }
 }

@@ -11,5 +11,10 @@
 // about supported directives.
 //= require jquery
 //= require jquery_ujs
-//= require codemirror.inline-attach
+//= require codemirror
+//= require codemirror.inlineAttach
+//= require overlay
+//= require continuelist
+//= require markdown
+//= require gfm
 //= require_tree .

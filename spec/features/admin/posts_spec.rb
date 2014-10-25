@@ -45,7 +45,7 @@ feature 'Blog admin' do
 
     fill_in 'post_title', :with => 'Edited title'
 
-    click_button I18n.t('tinyblog.ui.save_changes')
+    click_button I18n.t('tinyblog.ui.save')
 
     page.current_path.should == admin_post_path(post)
 

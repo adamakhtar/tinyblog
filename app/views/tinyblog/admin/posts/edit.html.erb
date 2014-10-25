@@ -2,23 +2,23 @@
 <div class="container">
   <div class="row">
 
-    <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false} do |f| %>
+    <%= form_for [tinyblog, :admin, @post], html: {class: 'editor' } do |f| %>
       <div class="main">
         <div class="post-container">
           <div class="post-header">
-            <%= f.input :title, label: false %>
+            <%= f.text_field :title %>
           </div>
-          <div>
-            <%= f.input :body, :input_html => {:'data-image-upload-url' => admin_pictures_url()}, label: false %>
+          <div class="post-body">
+            <%= f.text_area :body, data: {'image-upload-url' => admin_pictures_url()} %>
           </div>
         </div>
       </div>
     
       <div class="side">
         <div class="actions">
-            <%= f.button :submit, t('tinyblog.ui.save_changes'), :class => 'btn btn-block btn-primary' %>
+            <%= f.button t('tinyblog.ui.save'), :class => 'btn btn-block btn-primary' %>
   
-            <%= link_to 'Cancel', admin_post_path(@post), class: 'btn btn-block btn-default' %> 
+            <%= link_to t('tinyblog.ui.cancel'), admin_post_path(@post), class: 'btn btn-block btn-default' %> 
           </fieldset>
       </div>
   
@@ -31,26 +31,49 @@
 
 <script type="text/javascript">
   
-  var editor = new Editor($("textarea#post_body"));
-  editor.render();
-  
+  codemirror = CodeMirror.fromTextArea(document.getElementById('post_body'), {
+          mode:           'gfm',
+          tabMode:        'indent',
+          tabindex:       '2',
+          theme: 'tinyblog',
+          cursorScrollMargin: 10,
+          lineWrapping:   true,
+          extraKeys: {
+              Home:   'goLineLeft',
+              End:    'goLineRight',
+              Enter:  'newlineAndIndentContinueMarkdownList'
+          }
+   })
+
   options = {
     uploadUrl: $("textarea#post_body").data('image-upload-url'),
+    allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
     extraParams: { 
       authenticity_token: $('input[name="authenticity_token"]').attr('value') 
     },
-    allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
     progressText: "![Uploading file...]()",
-    urlText: "![file]({filename})",
+    urlText: "![a picture]({filename})",
     errorText: "Error uploading file"
-  };
-  // setup drag and drop images onto the editor via its codemirror
-  inlineAttach.attachToCodeMirror(editor.codemirror, options);
+  }
+
+  inlineAttach.attachToCodeMirror(codemirror, options);   
+
+
+  // var editor = new Editor($("textarea#post_body"));
+  // editor.render();
+  
+  // options = {
+  //   uploadUrl: $("textarea#post_body").data('image-upload-url'),
+  //   extraParams: { 
+  //     authenticity_token: $('input[name="authenticity_token"]').attr('value') 
+  //   },
+  //   allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
+  //   progressText: "![Uploading file...]()",
+  //   urlText: "![file]({filename})",
+  //   errorText: "Error uploading file"
+  // };
+  // // setup drag and drop images onto the editor via its codemirror
+  // inlineAttach.attachToCodeMirror(editor.codemirror, options);
 
 </script>
-
- <%= content_for :head do %>
-  <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
-  <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
-<% end %>
 

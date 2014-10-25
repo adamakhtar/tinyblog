@@ -36,5 +36,6 @@ en:
       edit:    'Edit'
       delete: 'Delete'
       restore: 'Restore'
-      save_changes: 'Save changes'
+      save: 'Save'
+      cancel: 'Cancel'
 
