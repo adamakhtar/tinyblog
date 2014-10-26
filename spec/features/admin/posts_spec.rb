@@ -18,21 +18,20 @@ feature 'Blog admin' do
     page.current_path.should == edit_admin_post_path(Tinyblog::Post.last)
   end
 
-  scenario 'updates a posts settings' do
+  scenario 'updates a posts author' do
     post = create(:post)
     new_author = create(:author, :first_name => "Michael", :last_name => "Jackson")
 
     visit admin_post_path(post)
 
-    fill_in 'Meta description', with: 'meta meta meta'
-    select new_author.short_fullname, from: 'Authored by'
+    select new_author.short_fullname, from: 'post_author_id'
 
-    click_button I18n.t('tinyblog.posts.update')
+    click_button I18n.t('tinyblog.posts.update_author')
 
     page.current_path.should == admin_post_path(post)
 
     flash_success!(I18n.t('tinyblog.posts.updated'))
-    page.should have_select('Authored by', selected: new_author.short_fullname)
+    page.should have_select('post_author_id', selected: new_author.short_fullname)
   end
 
 

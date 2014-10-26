@@ -1,6 +1,8 @@
 <div class="container-fixed">
-  <div class="breadcrumbs">
-    <%= link_to 'Back to posts', admin_posts_path %>
+  <div class="row">
+    <div class="breadcrumbs">
+      <%= link_to 'Back to posts', admin_posts_path %>
+    </div>
   </div>
   <div class="row">
 
@@ -10,12 +12,34 @@
             <h1 class="title">
               <%= @post.title %>
             </h1>
+
+          </div>
+          <div class="paper-toolbar">
+            <div class="author">
+              <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false}, html: {class: 'form-inline'} do |f| %>
+                <%= f.association :author, 
+                                  :collection => Tinyblog::Author.all, 
+                                  label: 'By:', 
+                                  :label_method => :short_fullname, 
+                                  :value_method => :id, 
+                                  :include_blank => false, 
+                                  input_html: {class: 'input-xs'} %>
+
+                <%= f.button :submit, t('tinyblog.posts.update_author'), class: 'btn btn-xs btn-default'  %>
+              <% end %>
+            </div>
           </div>
           <div class="paper-body">
             <%= simple_format(@post.body) %>
           </div>
 
           <div class="paper-footer">
+            <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false} do |f| %>
+              <div class="row">
+                <%= f.input :meta_description, wrapper_html: {class: 'col-sm-6'}, input_html: {class: 'input-xs'} %>
+              </div>
+              <%= f.button :submit, 'Update meta', class: 'btn btn-xs btn-default' %>
+            <% end %>
           </div>
       </div>
     </div>
@@ -27,35 +51,13 @@
           <ul class="actions-secondary">
             <li><%= link_to t('tinyblog.posts.view') + '...', post_path(@post, preview: true) %></li>
             <li><%= link_to t('tinyblog.posts.delete') + '...', admin_post_path(@post), method: :delete %></li>
+            <% if @post.drafting? %>
+            <li><%= link_to t('tinyblog.posts.publish') + '...', admin_post_status_path(@post, status: 'published'), method: :patch %> </li>
+            <% else %>
+              <li><%= link_to t('tinyblog.posts.draft') + '...', admin_post_status_path(@post, status: 'drafting'), method: :patch %> </li>
+            <% end %>
           </ul>
       </div>
-    
-        
-    
-      <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false} do |f| %>
-        <fieldset>
-          <label>Status: <%= @post.current_state.name.capitalize %></label>
-          <div class="form-group">
-            <% if @post.published? %>
-              <%= link_to 'Revert to draft', admin_post_status_path(@post, status: 'draft'), method: :patch, class: 'btn btn-sm btn-default' %>
-            <% else %>
-              <%= link_to 'Publish it', admin_post_status_path(@post, status: 'published'), method: :patch, class: 'btn btn-sm btn-default' %>
-            <% end %>
-          </div>
-        </fieldset>
-
-        <fieldset>
-  
-          <%= f.association :author, :collection => Tinyblog::Author.all, label: 'Authored by', :label_method => :short_fullname, :value_method => :id, :include_blank => false, input_html: {class: 'input-sm'} %>
-
-        </fieldset>
-
-        <fieldset>
-          <%= f.input :meta_description %>
-        </fieldset>
-        
-        <%= f.button :submit, t('tinyblog.posts.update'), class: 'btn btn-xs btn-primary' %>
-      <% end %>
     </div>
 
   </div>

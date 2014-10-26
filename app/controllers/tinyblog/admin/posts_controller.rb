@@ -66,7 +66,7 @@ module Tinyblog
       protected
 
         def post_params
-          params.require(:post).permit(:title, :body, :author_id)
+          params.require(:post).permit(:title, :body, :author_id, :meta_description)
         end
     end
   end

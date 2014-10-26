@@ -8,7 +8,7 @@ module Tinyblog
         def update
           @post = Post.find(params[:post_id])
           case params[:status]
-          when 'draft' then @post.draft!
+          when 'drafting' then @post.draft!
           when 'published' then @post.publish!
           end
 

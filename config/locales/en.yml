@@ -18,9 +18,11 @@ en:
       new: 'New post'
       edit: 'Edit this post'
       update: 'Update'
+      update_author: 'Update author'
       view: 'View'
       delete: 'Delete'
-      publish: 'Publish'
+      publish: 'Publish this draft'
+      draft: 'Revert to draft'
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
       about_author: "About %{name}"

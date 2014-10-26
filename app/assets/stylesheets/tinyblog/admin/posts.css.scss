@@ -103,7 +103,8 @@
   background-color: #eee;
 
   .breadcrumbs {
-    margin-bottom: 20px;
+    height: 60px;
+    line-height: 60px;
   }
 
   .breadcrumbs a {
@@ -112,7 +113,6 @@
 
   .main {
     width: 730px;
-    margin-left: -15px;
     float: left;
     margin-bottom: 100px;
   }
@@ -129,6 +129,10 @@
 
   .paper {
     background-color: #fff;
+  }
+
+  h1.title {
+
   }
 }
 

@@ -2,19 +2,28 @@
 
 }
 
-.paper-header, .paper-body {
+.paper-header, .paper-body, .paper-toolbar, .paper-footer {
   padding-left: 50px;
   padding-right: 50px;
 }
 
 .paper-header {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   min-height: 60px;
+  border-bottom: 1px solid #ddd;
 }
 
 .paper-header h1 {
   margin: 0px;
+  font-size: 32px;
+}
+
+.paper-toolbar {
+  border-bottom: 1px solid #ddd;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 30px;
 }
 
 .paper-body {
@@ -22,5 +31,8 @@
 }
 
 .paper-footer {
-  height: 60px;
+  padding-top: 30px; 
+  padding-bottom: 30px;
+  border-top: 1px solid #ddd;
+  min-height: 60px;
 }
