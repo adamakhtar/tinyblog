@@ -14,15 +14,7 @@
   }
 
   .side li a {
-    display: block;
-    color: $text-color;
-    opacity: 0.6;
-    text-decoration: underline;
-  }
-
-  .side li a:hover {
-    color: $text-color;
-    opacity: 0.9;
+    @include ui-link;
   }
 
   .side .actions {
@@ -99,8 +91,6 @@
 }
 
 .admin.posts.show {
-
-  background-color: #eee;
 
   .breadcrumbs {
     height: 60px;
