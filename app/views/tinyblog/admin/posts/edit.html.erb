@@ -2,19 +2,78 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-8 col-md-offset-2">
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <h1 class="panel-title">Edit Post</h1>
+    <%= form_for [tinyblog, :admin, @post], html: {class: 'editor' } do |f| %>
+      <div class="main">
+        <div class="post-container">
+          <div class="post-header">
+            <%= f.text_field :title %>
+          </div>
+          <div class="post-body">
+            <%= f.text_area :body, data: {'image-upload-url' => admin_pictures_url()} %>
+          </div>
         </div>
-
-        
-        <%= render 'form' %>
-        
       </div>
-    </div>
+    
+      <div class="side">
+        <div class="actions">
+            <%= f.button t('tinyblog.ui.save'), :class => 'btn btn-block btn-primary' %>
+  
+            <%= link_to t('tinyblog.ui.cancel'), admin_post_path(@post), class: 'btn btn-block btn-default' %> 
+          </fieldset>
+      </div>
+  
+    <% end %>
 
   </div>
   
 </div>
+
+
+<script type="text/javascript">
+  
+  codemirror = CodeMirror.fromTextArea(document.getElementById('post_body'), {
+          mode:           'gfm',
+          tabMode:        'indent',
+          tabindex:       '2',
+          theme: 'tinyblog',
+          cursorScrollMargin: 10,
+          lineWrapping:   true,
+          extraKeys: {
+              Home:   'goLineLeft',
+              End:    'goLineRight',
+              Enter:  'newlineAndIndentContinueMarkdownList'
+          }
+   })
+
+  options = {
+    uploadUrl: $("textarea#post_body").data('image-upload-url'),
+    allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
+    extraParams: { 
+      authenticity_token: $('input[name="authenticity_token"]').attr('value') 
+    },
+    progressText: "![Uploading file...]()",
+    urlText: "![a picture]({filename})",
+    errorText: "Error uploading file"
+  }
+
+  inlineAttach.attachToCodeMirror(codemirror, options);   
+
+
+  // var editor = new Editor($("textarea#post_body"));
+  // editor.render();
+  
+  // options = {
+  //   uploadUrl: $("textarea#post_body").data('image-upload-url'),
+  //   extraParams: { 
+  //     authenticity_token: $('input[name="authenticity_token"]').attr('value') 
+  //   },
+  //   allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
+  //   progressText: "![Uploading file...]()",
+  //   urlText: "![file]({filename})",
+  //   errorText: "Error uploading file"
+  // };
+  // // setup drag and drop images onto the editor via its codemirror
+  // inlineAttach.attachToCodeMirror(editor.codemirror, options);
+
+</script>
+

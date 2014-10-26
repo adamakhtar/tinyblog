@@ -1,0 +1,15 @@
+.navbar.navbar-tinyblog {
+  margin-bottom: 0px;
+}
+
+.navbar-tinyblog {
+  background: transparent;
+}
+
+.navbar-tinyblog li a {
+  @include ui-link;
+}
+
+.navbar-brand {
+  @include ui-link;
+}

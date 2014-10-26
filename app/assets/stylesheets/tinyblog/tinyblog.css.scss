@@ -1,0 +1,7 @@
+// Place all stylings in base.css.
+// This allows the user to create their own custom stylings for the blogs admin 
+// by creating a css file called tinyblog/tinyblog.css.scss in their main apps stylesheets dir.
+// This new file will get called instead of this file but the user 
+// but they can still use the styles in base by @import "tinyblog"
+
+@import 'base';

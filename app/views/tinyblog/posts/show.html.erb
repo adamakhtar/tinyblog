@@ -1,24 +1,26 @@
-<% content_for(:title) { "#{@post.title} | #{Tinyblog.blog_name}" } %>
+<% cache @post do %>
+  <% content_for(:title) { "#{@post.title} | #{Tinyblog.blog_name}" } %>
 
-<% if @post.meta_description %>
-  <% content_for(:meta_description) { @post.meta_description } %>
+  <% if @post.meta_description %>
+    <% content_for(:meta_description) { @post.meta_description } %>
+  <% end %>
+
+  <section>
+
+    <article>
+
+      <%= render 'post_title', :post => @post, :author => @author %>
+
+      <%= render 'post_body', :post => @post %>
+      
+    </article>
+
+    <%= render 'post_author', :author => @author %>
+
+    <%= render 'disqus_comments' %>
+
+  </section>
 <% end %>
-
-<section>
-
-  <article>
-
-    <%= render 'post_title', :post => @post, :author => @author %>
-
-    <%= render 'post_body', :post => @post %>
-    
-  </article>
-
-  <%= render 'post_author', :author => @author %>
-
-  <%= render 'disqus_comments' %>
-
-</section>
 
 <aside>
   <%= render 'share_buttons' %>

@@ -1,0 +1,9 @@
+ul.actions-secondary li {
+  border-bottom: 1px solid #ccc;
+}
+
+ul.actions-secondary li a {
+  display: block;
+  padding: 6px 0px;
+  @include action-link;
+}

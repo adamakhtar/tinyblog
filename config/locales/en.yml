@@ -16,11 +16,18 @@ en:
       updated: Your post was updated.
       not_updated: Your post could not be updated.
       new: 'New post'
-      publish: 'Publish'
+      edit: 'Edit this post'
+      update: 'Update'
+      update_author: 'Update author'
+      view: 'View'
+      delete: 'Delete'
+      publish: 'Publish this draft'
+      draft: 'Revert to draft'
       published_on: "Published: %{date}"
       written_by: "Written by %{name}"
       about_author: "About %{name}"
       deleted: 'Post was deleted.'
+      restored: 'Post was restored.'
     authors:
       created: The author was created.
       not_created: The author could not be created.
@@ -30,4 +37,7 @@ en:
     ui:
       edit:    'Edit'
       delete: 'Delete'
+      restore: 'Restore'
+      save: 'Save'
+      cancel: 'Cancel'
 

@@ -1,0 +1,52 @@
+/* keep any general css stylings here */
+
+$text-color: #444;
+$heading-color: #222;
+$editor-highlight-color: #4898FD;
+$editor-text-color: $text-color;
+
+body {
+  background: #F5F2EC;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container-fixed {
+  width: 970px;
+  padding: 0px 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// fancy centered headings with dividers vertically aligned in the middle on either sides
+// apply ot heading ie. <h5 class="fancy"> 
+// 
+.fancy {
+    overflow: hidden;
+    text-align: center;
+}
+.fancy:before,
+.fancy:after {
+    background-color: #000;
+    opacity: 0.1;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.fancy:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.fancy:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+

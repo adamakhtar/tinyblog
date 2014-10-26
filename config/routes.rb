@@ -9,7 +9,10 @@ Tinyblog::Engine.routes.draw do
   namespace :admin do 
     root :to => 'posts#index'
     resources :authors
-    resources :posts
+    resources :posts do 
+      member { put :restore }
+      resource :status, only: [:update], controller: 'posts/status'
+    end
     resources :authors
     resources :pictures, :only => [:create]
   end

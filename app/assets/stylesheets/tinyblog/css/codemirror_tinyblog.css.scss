@@ -1,0 +1,60 @@
+// defines how codemirror looks in tinyblog's post editor
+
+//General highfive theme 
+.CodeMirror.cm-s-tinyblog {
+  height: auto;
+
+
+  font-family: 'Menlo', 'Source Code Pro';
+  font-size: 16px;
+  line-height: 1.75;
+  color: $editor-text-color;
+  background: inherit;
+
+
+  // force empty codemirror to be of minimum height.
+  .CodeMirror-scroll {
+    min-height: 800px;
+    cursor: text;
+  }
+
+  .cm-keyword {color: #708;}
+  .cm-atom {color: #219;}
+  .cm-number {color: #164;}
+  .cm-def {color: #00f;}
+  .cm-variable,
+  .cm-punctuation,
+  .cm-property,
+  .cm-operator {}
+  .cm-variable-2 {color: $editor-text-color;}
+  .cm-variable-3 {color: #085;}
+  .cm-comment {color: $editor-highlight-color;}
+  .cm-string {color: $editor-text-color;}
+  .cm-string-2 {color: #f50;}
+  .cm-meta {color: #555;}
+  .cm-qualifier {color: #555;}
+  .cm-builtin {color: #30a;}
+  .cm-bracket {color: #997;}
+  .cm-tag {color: #170;}
+  .cm-attribute {color: #00c;}
+  .cm-header {color: #222;}
+  .cm-header {color: #4898FD;}
+  .cm-quote {color: $editor-text-color;}
+  .cm-hr {color: #999;}
+  .cm-link {color: $editor-highlight-color;}
+
+  div.CodeMirror-cursor {
+    border-left: 3px solid $editor-highlight-color;
+   }
+  
+  /* Shown when moving in bi-directional text */
+  div.CodeMirror-secondarycursor {
+    border-left: 2px solid $editor-highlight-color;
+  }
+  
+  .cm-keymap-fat-cursor div.CodeMirror-cursor {
+    width: auto;
+    border: 0;
+    background: #7e7;
+  }
+}

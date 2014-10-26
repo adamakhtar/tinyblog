@@ -1,0 +1,13 @@
+@mixin action-link {
+  text-decoration: underline;
+}
+
+@mixin ui-link {
+  color: black;
+  opacity: 0.5;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

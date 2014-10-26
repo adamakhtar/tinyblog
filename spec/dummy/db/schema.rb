@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403024852) do
+ActiveRecord::Schema.define(version: 20141025134011) do
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "tinyblog_authors", force: true do |t|
     t.string   "first_name"
@@ -39,9 +52,14 @@ ActiveRecord::Schema.define(version: 20140403024852) do
     t.text     "meta_description"
     t.datetime "published_at"
     t.string   "slug"
+    t.datetime "deleted_at"
+    t.string   "workflow_state"
+    t.integer  "view_count",       default: 0
   end
 
+  add_index "tinyblog_posts", ["deleted_at"], name: "index_tinyblog_posts_on_deleted_at"
   add_index "tinyblog_posts", ["slug"], name: "index_tinyblog_posts_on_slug", unique: true
+  add_index "tinyblog_posts", ["workflow_state"], name: "index_tinyblog_posts_on_workflow_state"
 
   create_table "users", force: true do |t|
     t.boolean  "admin"

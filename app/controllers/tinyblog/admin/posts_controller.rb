@@ -7,7 +7,17 @@ module Tinyblog
       respond_to :html
 
       def index
-        @posts = Post.all
+        params[:tab] ||= 'All'
+        @posts = case params[:tab]
+        when 'All'    then Post.all
+        when 'Draft' then Post.with_drafting_state
+        when 'Published' then Post.with_published_state
+        when 'Trash' then Post.only_deleted
+        end
+      end
+
+      def show
+        @post = Post.find(params[:id])
       end
 
       def new
@@ -15,14 +25,13 @@ module Tinyblog
       end
 
       def create
-        @post = Post.new(post_params)
-        if @post.save
-          flash[:notice] = t('tinyblog.posts.created')
+        @post = Post.create(author: Author.first)
+        if @post.valid?
+          redirect_to edit_admin_post_path(@post)
         else
           flash[:warning] = t('tinyblog.posts.not_created')
+          redirect_to admin_posts_path
         end
-
-        respond_with @post, :location => admin_posts_path
       end
 
       def edit
@@ -38,7 +47,7 @@ module Tinyblog
           flash[:warning] = t('tinyblog.posts.not_updated')
         end
 
-        respond_with @post, :location => admin_posts_path
+        respond_with @post, :location => admin_post_path(@post)
       end
 
       def destroy
@@ -49,10 +58,17 @@ module Tinyblog
         redirect_to admin_posts_path
       end
 
+      def restore
+        @post = Post.only_deleted.find(params[:id])
+        Post.restore(@post.id)
+        flash[:notice] = t('tinyblog.posts.restored')
+        redirect_to admin_posts_path
+      end
+
       protected
 
         def post_params
-          params.require(:post).permit(:title, :body, :author_id)
+          params.require(:post).permit(:title, :body, :author_id, :meta_description)
         end
     end
   end
