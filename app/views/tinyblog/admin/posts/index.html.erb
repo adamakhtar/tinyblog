@@ -9,6 +9,14 @@
             <%= link_to 'All', admin_posts_path(tab: 'All') %>
           <% end %>
 
+          <%= content_tag :li, class: ('active' if params[:tab] == 'Draft' ) do %>
+            <%= link_to 'Drafts', admin_posts_path(tab: 'Draft') %>
+          <% end %>
+
+          <%= content_tag :li, class: ('active' if params[:tab] == 'Published' ) do %>
+            <%= link_to 'Published', admin_posts_path(tab: 'Published') %>
+          <% end %>
+
           <%= content_tag :li, class: ('active' if params[:tab] == 'Trash' ) do %>
             <%= link_to 'Trash', admin_posts_path(tab: 'Trash') %>
           <% end %>

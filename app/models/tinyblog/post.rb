@@ -10,6 +10,8 @@ module Tinyblog
     validates :author,  presence:  { message: 'must be present.'}
 
     scope :latest, -> { order('created_at DESC') }
+    scope :active, -> { where(deleted_at: nil) }
+    default_scope { active }
 
     before_save :update_published_at
     before_validation :ensure_title_and_body

@@ -11,5 +11,9 @@ FactoryGirl.define do
     trait :drafting do
       workflow_state 'drafting'
     end 
+
+    trait :trashed do
+      deleted_at 3.days.ago
+    end
   end
 end 

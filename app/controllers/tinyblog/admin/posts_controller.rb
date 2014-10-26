@@ -9,7 +9,9 @@ module Tinyblog
       def index
         params[:tab] ||= 'All'
         @posts = case params[:tab]
-        when 'All' then Post.all
+        when 'All'    then Post.all
+        when 'Draft' then Post.with_drafting_state
+        when 'Published' then Post.with_published_state
         when 'Trash' then Post.only_deleted
         end
       end
