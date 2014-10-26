@@ -16,7 +16,7 @@ module Tinyblog
 
 
     extend FriendlyId
-    friendly_id :title, use: [:slugged, :finders]
+    friendly_id :title, use: [:history, :slugged, :finders]
 
     include Workflow
     workflow do
@@ -39,6 +39,10 @@ module Tinyblog
       self.increment!(:view_count)
     end
 
+    def should_generate_new_friendly_id?
+      title_changed?
+    end
+
     private 
     #
     # Callback
@@ -50,8 +54,8 @@ module Tinyblog
     end
 
     def ensure_title_and_body
-       self.title ||= "Untitled"
-       self.body  ||= ""
+      self.title ||= "Untitled"
+      self.body  ||= ""
     end
 
   end

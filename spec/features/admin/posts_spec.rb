@@ -47,6 +47,8 @@ feature 'Blog admin' do
 
     click_button I18n.t('tinyblog.ui.save')
 
+    post.reload
+
     page.current_path.should == admin_post_path(post)
 
     flash_success!(I18n.t('tinyblog.posts.updated'))
