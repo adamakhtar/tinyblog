@@ -45,6 +45,9 @@
               </div>
               <%= f.button :submit, 'Update meta', class: 'btn btn-xs btn-default' %>
             <% end %>
+            <div class="share-url">
+              Share URL: <%= post_url(@post, access_key: @post.access_key) %>
+            </div>  
           </div>
       </div>
     </div>

@@ -54,5 +54,27 @@ describe Tinyblog::PostsController do
         post.view_count.should == 1
       end
     end
+
+    context "as valid key holder" do
+      it "shows drafts" do
+        post = create(:post, :drafting)
+        get :show, 
+          id: post.id, 
+          access_key: post.access_key
+        
+        response.should be_success
+      end
+    end
+
+    context "as invalid key holder" do
+      it "does not show post" do
+        post = create(:post, :drafting)
+        get :show, 
+          id: post.id, 
+          access_key: 'junkkey'
+        
+        response.should redirect_to posts_path
+      end
+    end
   end
 end

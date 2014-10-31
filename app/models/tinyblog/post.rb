@@ -6,6 +6,7 @@ module Tinyblog
     belongs_to :author
 
     validates :published_at , presence: true
+    validates :access_key , length: {is: 6}
     validates :title,   presence: true
     validates :body,    length: {minimum: 0, allow_nil: false}
     validates :author,  presence:  { message: 'must be present.'}
@@ -53,11 +54,17 @@ module Tinyblog
     def set_defaults
       return unless new_record?
       self.published_at ||= Time.now 
+      self.access_key   ||= secure_key
     end
 
     def ensure_title_and_body
       self.title ||= "Untitled"
       self.body  ||= ""
+    end
+
+    def secure_key
+      length = 6
+      SecureRandom.hex(length/2)
     end
 
   end

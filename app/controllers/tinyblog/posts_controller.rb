@@ -4,6 +4,7 @@ module Tinyblog
   class PostsController < ApplicationController
     
     before_action :load_post, only: :show
+    before_action :authorize_post, only: :show
     before_action :redirect_old_slugs, only: :show
 
     respond_to :html, :rss
@@ -26,10 +27,16 @@ module Tinyblog
     private
 
     def load_post
-      @post = if tinyblog_admin_logged_in? 
-        Post.find(params[:id])
+      @post = Post.find(params[:id])
+    end
+
+    def authorize_post
+      if tinyblog_admin_logged_in? or
+        @post.published? or
+        @post.access_key == params[:access_key]
+        return true
       else
-        Post.with_published_state.find(params[:id])
+        raise ActiveRecord::RecordNotFound
       end
     end
 

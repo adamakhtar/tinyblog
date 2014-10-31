@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025134011) do
+ActiveRecord::Schema.define(version: 20141031082714) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141025134011) do
     t.datetime "deleted_at"
     t.string   "workflow_state"
     t.integer  "view_count",       default: 0
+    t.string   "access_key"
   end
 
   add_index "tinyblog_posts", ["deleted_at"], name: "index_tinyblog_posts_on_deleted_at"
