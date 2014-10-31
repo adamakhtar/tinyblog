@@ -16,7 +16,7 @@
     
       <div class="side">
         <div class="actions">
-            <%= f.button t('tinyblog.ui.save'), :class => 'btn btn-block btn-primary' %>
+            <%= f.button t('tinyblog.ui.save'), :class => 'btn btn-block btn-primary' , data: {behaviour: 'save_post' } %>
   
             <%= link_to t('tinyblog.ui.cancel'), admin_post_path(@post), class: 'btn btn-block btn-default' %> 
           </fieldset>
@@ -30,7 +30,6 @@
 
 
 <script type="text/javascript">
-  
   codemirror = CodeMirror.fromTextArea(document.getElementById('post_body'), {
           mode:           'gfm',
           tabMode:        'indent',
@@ -45,6 +44,14 @@
           }
    })
 
+  codemirror.on('change', function(){
+    window.setDirty(true);
+  });
+
+  $('button[data-behaviour="save_post"]').on('click', function(){
+    window.setDirty(false);
+  })
+
   options = {
     uploadUrl: $("textarea#post_body").data('image-upload-url'),
     allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
@@ -57,23 +64,5 @@
   }
 
   inlineAttach.attachToCodeMirror(codemirror, options);   
-
-
-  // var editor = new Editor($("textarea#post_body"));
-  // editor.render();
-  
-  // options = {
-  //   uploadUrl: $("textarea#post_body").data('image-upload-url'),
-  //   extraParams: { 
-  //     authenticity_token: $('input[name="authenticity_token"]').attr('value') 
-  //   },
-  //   allowedTypes: ["image/jpeg", "image/png", "image/jpg", "image/gif"],
-  //   progressText: "![Uploading file...]()",
-  //   urlText: "![file]({filename})",
-  //   errorText: "Error uploading file"
-  // };
-  // // setup drag and drop images onto the editor via its codemirror
-  // inlineAttach.attachToCodeMirror(editor.codemirror, options);
-
 </script>
 
