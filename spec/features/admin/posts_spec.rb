@@ -26,7 +26,7 @@ feature 'Blog admin' do
 
     select new_author.short_fullname, from: 'post_author_id'
 
-    click_button I18n.t('tinyblog.posts.update_author')
+    click_button I18n.t('tinyblog.ui.update')
 
     page.current_path.should == admin_post_path(post)
 

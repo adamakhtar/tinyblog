@@ -5,6 +5,7 @@ module Tinyblog
 
     belongs_to :author
 
+    validates :published_at , presence: true
     validates :title,   presence: true
     validates :body,    length: {minimum: 0, allow_nil: false}
     validates :author,  presence:  { message: 'must be present.'}
@@ -13,7 +14,7 @@ module Tinyblog
     scope :active, -> { where(deleted_at: nil) }
     default_scope { active }
 
-    before_save :update_published_at
+    after_initialize  :set_defaults
     before_validation :ensure_title_and_body
 
 
@@ -49,10 +50,9 @@ module Tinyblog
     #
     # Callback
     #
-    def update_published_at
-      if published_at.nil?
-        self.published_at = Time.now
-      end
+    def set_defaults
+      return unless new_record?
+      self.published_at ||= Time.now 
     end
 
     def ensure_title_and_body

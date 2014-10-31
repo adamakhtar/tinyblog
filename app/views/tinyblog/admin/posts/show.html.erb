@@ -15,19 +15,24 @@
 
           </div>
           <div class="paper-toolbar">
-            <div class="author">
-              <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false}, html: {class: 'form-inline'} do |f| %>
-                <%= f.association :author, 
-                                  :collection => Tinyblog::Author.all, 
-                                  label: 'By:', 
-                                  :label_method => :short_fullname, 
-                                  :value_method => :id, 
-                                  :include_blank => false, 
-                                  input_html: {class: 'input-xs'} %>
+            <%= simple_form_for [tinyblog, :admin, @post], defaults: {required: false}, html: {class: 'form-inline'} do |f| %>
+              <%= f.association :author, 
+                                :collection => Tinyblog::Author.all, 
+                                label: 'By:', 
+                                :label_method => :short_fullname, 
+                                :value_method => :id, 
+                                :include_blank => false, 
+                                input_html: {class: 'input-xs'} %>
 
-                <%= f.button :submit, t('tinyblog.posts.update_author'), class: 'btn btn-xs btn-default'  %>
-              <% end %>
-            </div>
+              <%= f.input :published_at, 
+                          as: :date,
+                          label: 'On:',
+                          input_html: {
+                            class: 'input-xs'
+                          } %>     
+
+              <%= f.button :submit, t('tinyblog.ui.update'), class: 'btn btn-xs btn-default'  %>
+            <% end %>
           </div>
           <div class="paper-body">
             <%= simple_format(@post.body) %>
