@@ -37,6 +37,14 @@ describe Tinyblog::PostsController do
         response.should redirect_to posts_path
       end
 
+      it "does not show deleted" do
+        post = create(:post, :published)
+        old_slug = post.id
+        post.destroy
+        get :show, id: old_slug
+        response.should redirect_to posts_path
+      end
+
       it "redirects old slugs" do
         controller.unstub(:redirect_old_slugs)
         post = create(:post, :published, title: 'oldslug')
