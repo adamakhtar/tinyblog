@@ -10,7 +10,7 @@ module Tinyblog
     validates :body,    length: {minimum: 0, allow_nil: false}
     validates :author,  presence:  { message: 'must be present.'}
 
-    scope :latest, -> { order('created_at DESC') }
+    scope :latest, -> { order('published_at DESC') }
     scope :active, -> { where(deleted_at: nil) }
     default_scope { active }
 

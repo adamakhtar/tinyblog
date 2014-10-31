@@ -1,21 +1,22 @@
 require 'spec_helper'
 
 feature 'Posts' do
-  scenario 'lists latest posts' do
-    post_a = create(:post, :published, :created_at => 1.day.ago)
-    post_b = create(:post, :published, :created_at => 2.days.ago)
+  scenario 'lists recently published posts first' do
+    post_a = create(:post, :published, :published_at => 1.day.ago)
+    post_b = create(:post, :published, :published_at => 2.days.ago)
 
     visit root_path
 
-    page.should have_content post_a.title, :within => selector_for(:first_post)
-    page.should have_content post_b.title, :within => selector_for(:second_post)
+    page.should have_content post_b.title, :within => selector_for(:first_post)
+    page.should have_content post_a.title, :within => selector_for(:second_post)
     page.has_title? Tinyblog.blog_name
     meta_description_present!(Tinyblog.blog_description)
   end
 
   scenario 'only lists publised posts' do
-    post_a = create(:post, :created_at => 1.day.ago)
-    post_b = create(:post, :created_at => 2.days.ago)
+    post_a = create(:post, :created_at => 2.day.ago)
+    post_b = create(:post, :created_at => 1.days.ago)
+
 
     post_a.publish!
 
