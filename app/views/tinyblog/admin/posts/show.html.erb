@@ -52,7 +52,7 @@
     
     <div class="side">
       <div class="actions">
-          <%= link_to t('tinyblog.posts.edit'), edit_admin_post_path(@post), :class => 'btn btn-block btn-default btn-lg' %>
+          <%= link_to t('tinyblog.posts.edit'), edit_admin_editor_path(@post), :class => 'btn btn-block btn-default btn-lg' %>
           <ul class="actions-secondary">
             <li><%= link_to t('tinyblog.posts.view') + '...', post_path(@post, preview: true) %></li>
             <li><%= link_to t('tinyblog.posts.delete') + '...', admin_post_path(@post), method: :delete %></li>
