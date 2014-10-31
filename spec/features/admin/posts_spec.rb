@@ -15,7 +15,7 @@ feature 'Blog admin' do
     visit admin_posts_path
     click_link I18n.t('tinyblog.posts.new')
 
-    page.current_path.should == edit_admin_post_path(Tinyblog::Post.last)
+    page.current_path.should == edit_admin_editor_path(Tinyblog::Post.last)
   end
 
   scenario 'updates a posts author' do
@@ -26,33 +26,12 @@ feature 'Blog admin' do
 
     select new_author.short_fullname, from: 'post_author_id'
 
-    click_button I18n.t('tinyblog.posts.update_author')
+    click_button I18n.t('tinyblog.ui.update')
 
     page.current_path.should == admin_post_path(post)
 
     flash_success!(I18n.t('tinyblog.posts.updated'))
     page.should have_select('post_author_id', selected: new_author.short_fullname)
-  end
-
-
-  scenario 'edit a post' do
-    post = create(:post)
-
-    visit admin_post_path(post)
-
-    click_link I18n.t('tinyblog.posts.edit')
-
-    fill_in 'post_title', :with => 'Edited title'
-
-    click_button I18n.t('tinyblog.ui.save')
-
-    post.reload
-
-    page.current_path.should == admin_post_path(post)
-
-    flash_success!(I18n.t('tinyblog.posts.updated'))
-
-    page.should have_content 'Edited title'
   end
 
   scenario 'delete a post' do

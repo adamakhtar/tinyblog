@@ -9,10 +9,14 @@ Tinyblog::Engine.routes.draw do
   namespace :admin do 
     root :to => 'posts#index'
     resources :authors
-    resources :posts do 
+    resources :posts, except: [:edit] do 
       member { put :restore }
       resource :status, only: [:update], controller: 'posts/status'
     end
+    
+    resource :editor, path: 'editor/:id',  only: [:edit, :update], controller: 'editor' 
+
+    resource :editor, only: [:edit, :update], controller: 'posts/editor'
     resources :authors
     resources :pictures, :only => [:create]
   end

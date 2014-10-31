@@ -9,7 +9,7 @@
   </head>
   <body class="admin <%= controller_name %> <%= action_name %>">
 
-    <% unless controller_name == 'posts' and action_name == 'edit' %>
+    <% unless controller_name == 'editor' %>
       <nav class="navbar navbar-tinyblog" role="navigation">
          <div class="container">
            
@@ -37,8 +37,7 @@
        </nav>
      <% end %>
 
-     <%= render 'tinyblog/shared/messages' %>
-
+    <%= render 'tinyblog/shared/messages' %>
     <%= yield %>
 
   </body>
