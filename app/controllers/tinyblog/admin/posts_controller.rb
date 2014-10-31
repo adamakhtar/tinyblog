@@ -27,17 +27,12 @@ module Tinyblog
       def create
         @post = Post.create(author: Author.first)
         if @post.valid?
-          redirect_to edit_admin_post_path(@post)
+          redirect_to edit_admin_editor_path(@post)
         else
           flash[:warning] = t('tinyblog.posts.not_created')
           redirect_to admin_posts_path
         end
       end
-
-      def edit
-        @post = Post.find(params[:id])
-      end
-
 
       def update
         @post = Post.find(params[:id])
@@ -68,7 +63,7 @@ module Tinyblog
       protected
 
         def post_params
-          params.require(:post).permit(:title, :body, :author_id, :meta_description)
+          params.require(:post).permit(:author_id, :meta_description, :"published_at(1i)", :"published_at(2i)", :"published_at(3i)")
         end
     end
   end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tinyblog (0.0.3)
+    tinyblog (0.0.4)
       carrierwave
       friendly_id (= 5.0.3)
       paranoia (~> 2.0)

@@ -1,0 +1,36 @@
+.admin.editor.edit {
+
+  .flash-container {
+    height: 70px;
+  }
+
+  .main {
+    width: 700px;
+    margin: 0px auto 100px;
+  }
+
+  .side {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    width: 70px;
+  }
+
+  input#post_title {
+    height: 50px;
+    width: 685px;
+    border: none;
+    border: 1px solid #ddd;
+    padding: 10px 10px;
+    font-family: 'Menlo', 'Source Code Pro';
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.75;
+    color: $editor-highlight-color;
+    outline: none;
+  } 
+
+  .post-body {
+    padding: 20px 0px;
+  }
+}

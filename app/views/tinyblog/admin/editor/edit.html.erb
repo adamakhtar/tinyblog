@@ -1,8 +1,11 @@
+<div class="flash-container">
+  <%= render 'tinyblog/shared/messages' %>
+</div>
 
 <div class="container">
   <div class="row">
 
-    <%= form_for [tinyblog, :admin, @post], html: {class: 'editor' } do |f| %>
+    <%= form_for @post, url: admin_editor_url, html: {class: 'editor' } do |f| %>
       <div class="main">
         <div class="post-container">
           <div class="post-header">
